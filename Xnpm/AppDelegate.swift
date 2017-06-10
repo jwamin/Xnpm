@@ -21,6 +21,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
+    @IBAction func openAction(_ sender: Any) {
+        print("open called")
+        let openPanel = NSOpenPanel()
+        openPanel.allowedFileTypes = ["json"];
+        openPanel.canChooseDirectories = false;
+        openPanel.begin(completionHandler: {
+                number in
+            print(openPanel.url!)
+        })
+    }
 
 }
 

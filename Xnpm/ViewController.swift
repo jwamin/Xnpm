@@ -10,6 +10,14 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+    @IBOutlet weak var mainTitle: NSTextField!
+    @IBOutlet weak var author: NSTextField!
+    @IBOutlet weak var descriptionLabel: NSTextField!
+    @IBOutlet weak var license: NSTextField!
+    @IBOutlet weak var repoLink: NSTextField!
+    @IBOutlet weak var scriptDropdown: NSPopUpButton!
+    @IBOutlet weak var execButton: NSButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +30,9 @@ class ViewController: NSViewController {
         }
     }
 
+    @IBAction func executeScript(sender:Any){
+        print("executing script");
+    }
 
 }
 
