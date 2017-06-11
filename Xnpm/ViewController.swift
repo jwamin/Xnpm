@@ -17,11 +17,18 @@ class ViewController: NSViewController {
     @IBOutlet weak var repoLink: NSTextField!
     @IBOutlet weak var scriptDropdown: NSPopUpButton!
     @IBOutlet weak var execButton: NSButton!
+    @IBOutlet weak var button2: NSButton!
+    @IBOutlet weak var runButton: NSButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        bind(#keyPath(touchBar), to: self, withKeyPath: #keyPath(touchBar), options: nil)
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear() {
+        self.view.window?.unbind(#keyPath(touchBar)) // unbind first
+        self.view.window?.bind(#keyPath(touchBar), to: self, withKeyPath: #keyPath(touchBar), options: nil)
     }
 
     override var representedObject: Any? {
@@ -29,10 +36,17 @@ class ViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
-
-    @IBAction func executeScript(sender:Any){
-        print("executing script");
+    @IBAction func runFromTouchBar(_ sender: Any) {
+        executeScript(sender: sender)
     }
 
+    @IBAction func executeScript(sender:Any){
+        print("executing script from \((sender as! NSButton).title)");
+    }
+
+    deinit {
+        self.view.window?.unbind(#keyPath(touchBar))
+    }
+    
 }
 

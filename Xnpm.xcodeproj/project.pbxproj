@@ -11,6 +11,7 @@
 		3D28327E1EE777B300039AE3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D28327D1EE777B300039AE3 /* ViewController.swift */; };
 		3D2832801EE777B300039AE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D28327F1EE777B300039AE3 /* Assets.xcassets */; };
 		3D2832831EE777B300039AE3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D2832811EE777B300039AE3 /* Main.storyboard */; };
+		3D7E72F91EED907000928DB0 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7E72F81EED907000928DB0 /* WindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		3D28327F1EE777B300039AE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D2832821EE777B300039AE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3D2832841EE777B300039AE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D7E72F81EED907000928DB0 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				3D28327B1EE777B300039AE3 /* AppDelegate.swift */,
 				3D28327D1EE777B300039AE3 /* ViewController.swift */,
+				3D7E72F81EED907000928DB0 /* WindowController.swift */,
 				3D28327F1EE777B300039AE3 /* Assets.xcassets */,
 				3D2832811EE777B300039AE3 /* Main.storyboard */,
 				3D2832841EE777B300039AE3 /* Info.plist */,
@@ -134,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D28327E1EE777B300039AE3 /* ViewController.swift in Sources */,
+				3D7E72F91EED907000928DB0 /* WindowController.swift in Sources */,
 				3D28327C1EE777B300039AE3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,6 +295,7 @@
 				3D2832891EE777B300039AE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
