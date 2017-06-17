@@ -699,14 +699,12 @@
                             </button>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mZD-QC-Ugx">
                                 <rect key="frame" x="18" y="58" width="421" height="26"/>
-                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="oEg-yy-P9d" id="2qQ-vR-cEZ">
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" enabled="NO" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="oEg-yy-P9d" id="2qQ-vR-cEZ">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="zmh-w1-Kil">
                                         <items>
                                             <menuItem title="Item 1" state="on" id="oEg-yy-P9d"/>
-                                            <menuItem title="Item 2" id="hrB-iZ-YGQ"/>
-                                            <menuItem title="Item 3" id="Sxf-a9-c46"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
@@ -816,7 +814,7 @@
                                             <font key="font" usesAppearanceFont="YES"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="runFromTouchBar:" target="XfG-lQ-9wD" id="MWe-RK-hPr"/>
+                                            <action selector="executeScriptWithSender:" target="XfG-lQ-9wD" id="51V-CL-oBZ"/>
                                         </connections>
                                     </button>
                                 </viewController>
@@ -830,7 +828,7 @@
                                             <font key="font" usesAppearanceFont="YES"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="runFromTouchBar:" target="XfG-lQ-9wD" id="StS-Gu-fmG"/>
+                                            <action selector="executeScriptWithSender:" target="XfG-lQ-9wD" id="m1D-2n-aNW"/>
                                         </connections>
                                     </button>
                                 </viewController>
@@ -870,7 +868,7 @@
                         <outlet property="mainTitle" destination="eoe-g7-CSp" id="GMx-Cv-eGy"/>
                         <outlet property="repoLink" destination="ShX-gQ-Ccw" id="7OP-AF-86I"/>
                         <outlet property="runButton" destination="RI4-1z-zbA" id="eqD-RS-t0b"/>
-                        <outlet property="scriptDropdown" destination="mZD-QC-Ugx" id="8JX-Zd-O0A"/>
+                        <outlet property="scriptDropdown" destination="mZD-QC-Ugx" id="eG8-gy-76f"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
