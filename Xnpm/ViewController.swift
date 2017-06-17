@@ -20,6 +20,13 @@ class ViewController: NSViewController {
     @IBOutlet weak var button2: NSButton!
     @IBOutlet weak var runButton: NSButton!
     
+    var package:PackageAnalyser!{
+        didSet{
+            print("didset")
+            print(package.returndict())
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bind(#keyPath(touchBar), to: self, withKeyPath: #keyPath(touchBar), options: nil)
@@ -30,7 +37,7 @@ class ViewController: NSViewController {
         self.view.window?.unbind(#keyPath(touchBar)) // unbind first
         self.view.window?.bind(#keyPath(touchBar), to: self, withKeyPath: #keyPath(touchBar), options: nil)
     }
-
+    
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.

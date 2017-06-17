@@ -33,7 +33,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         openPanel.canChooseDirectories = false;
         openPanel.begin(completionHandler: {
                 number in
-            print(openPanel.url!)
+
+                let package = PackageAnalyser(packageUrl: openPanel.url!)
+                let main = NSStoryboard(name : "Main", bundle: nil).instantiateController(withIdentifier: "MainWindow") as! NSWindowController
+                let mainVc = NSStoryboard(name:"Main", bundle: nil).instantiateController(withIdentifier: "MainViewController") as! ViewController
+                mainVc.package = package
+                main.window?.contentViewController = mainVc
+                main.window?.makeKeyAndOrderFront(nil)
+            
+            
+            
+            
         })
     }
 
