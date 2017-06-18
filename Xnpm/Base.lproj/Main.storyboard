@@ -696,6 +696,14 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="executeScriptWithSender:" target="XfG-lQ-9wD" id="CxL-Hk-Qz3"/>
+                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.package.scripts" id="vdC-yJ-OsI">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSIsNotNil</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </button>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mZD-QC-Ugx">
                                 <rect key="frame" x="18" y="58" width="421" height="26"/>
@@ -708,6 +716,15 @@
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="content" keyPath="self.package.scripts" id="e53-kH-JP1"/>
+                                    <binding destination="XfG-lQ-9wD" name="contentValues" keyPath="self.package.scripts" previousBinding="e53-kH-JP1" id="4t2-AI-T8E"/>
+                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.package.scripts" id="IJ7-o4-Cl5">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSIsNotNil</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9PA-lp-zUW">
                                 <rect key="frame" x="18" y="90" width="47" height="17"/>
@@ -727,6 +744,9 @@
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.package.packageTitle" id="6sJ-Yi-lRW"/>
+                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHx-t8-h82">
                                 <rect key="frame" x="420" y="263" width="42" height="17"/>
@@ -735,6 +755,9 @@
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.package.version" id="zNl-w5-lsh"/>
+                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fek-X6-G3o">
                                 <rect key="frame" x="18" y="152" width="444" height="17"/>
@@ -743,6 +766,9 @@
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.package.author" id="v3P-il-ias"/>
+                                </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjI-8G-Bwm">
                                 <rect key="frame" x="18" y="177" width="444" height="53"/>
@@ -754,6 +780,9 @@
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.package.packageDescription" id="Vlu-fK-OdD"/>
+                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="989-1w-mKH">
                                 <rect key="frame" x="18" y="238" width="444" height="17"/>
@@ -762,6 +791,9 @@
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.package.author" id="NJs-RU-v5X"/>
+                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ShX-gQ-Ccw">
                                 <rect key="frame" x="18" y="127" width="444" height="17"/>
@@ -770,6 +802,9 @@
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.package.repoLink" id="V1G-36-jjT"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <constraints>
@@ -872,6 +907,7 @@
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="fWQ-ft-nlN"/>
             </objects>
             <point key="canvasLocation" x="75" y="738"/>
         </scene>

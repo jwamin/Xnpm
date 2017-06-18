@@ -15,7 +15,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var descriptionLabel: NSTextField!
     @IBOutlet weak var license: NSTextField!
     @IBOutlet weak var repoLink: NSTextField!
-    @IBOutlet var scriptDropdown: NSPopUpButton!
+    @IBOutlet weak var scriptDropdown: NSPopUpButton!
     @IBOutlet weak var execButton: NSButton!
     @IBOutlet weak var button2: NSButton!
     @IBOutlet weak var runButton: NSButton!
@@ -34,6 +34,7 @@ class ViewController: NSViewController {
             bind(#keyPath(touchBar), to: self, withKeyPath: #keyPath(touchBar), options: nil)
         }
         // Do any additional setup after loading the view.
+        print(scriptDropdown.itemTitles)
 
     }
     
@@ -43,13 +44,9 @@ class ViewController: NSViewController {
     }
     
     func populateDropdown(){
-
+        print("populate dropdown")
         scriptDropdown!.removeAllItems()
-        let main = package.returndict() as [String:Any]
-        let dict = main["scripts"] as! [String:String]
-        let scripts = Array(dict.keys)
-
-        scriptDropdown!.addItems(withTitles: scripts)
+        scriptDropdown!.addItems(withTitles: package.scripts as! [String])
         scriptDropdown.isEnabled = true;
         
 //        Update Touch Bar, if available

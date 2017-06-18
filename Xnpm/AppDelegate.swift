@@ -43,7 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 mainVc.package = package
                 main.window?.contentViewController = mainVc
                 main.window?.makeKeyAndOrderFront(nil)
-                mainVc.populateDropdown()
+                //mainVc.populateDropdown()
             
             
             

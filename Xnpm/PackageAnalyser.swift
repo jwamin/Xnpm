@@ -13,7 +13,16 @@ class PackageAnalyser: NSObject {
     var url:URL!
     var dictionary:[String:Any]!
     
-    init(packageUrl:URL) {
+    dynamic var packageTitle:String!
+    dynamic var author:String!
+    dynamic var version:String!
+    dynamic var license:String!
+    dynamic var packageDescription:String!
+    dynamic var repoLink:URL!
+    dynamic var scripts:NSArray!
+    
+    
+    init(packageUrl:URL?) {
         super.init()
         
         url = packageUrl
@@ -32,6 +41,8 @@ class PackageAnalyser: NSObject {
                 
                 let parsedData = try JSONSerialization.jsonObject(with: data) as! [String:Any]
                 dictionary = parsedData                 
+                //print(dictionary)
+                processDict()
                 
             } catch let error as NSError {
                 
@@ -44,6 +55,32 @@ class PackageAnalyser: NSObject {
             print("didnt work")
             
         }
+        
+    }
+    
+    func processDict(){
+        
+        
+        
+        let arr = dictionary["scripts"] as! [String:String]
+        scripts = NSArray(array: Array(arr.keys))
+        
+        packageTitle = dictionary["name"] as! String
+        author = dictionary["author"] as! String
+        license = dictionary["license"] as! String
+        version = dictionary["version"] as! String
+        packageDescription = dictionary["description"] as! String
+        let repository = dictionary["repository"] as! [String:String]
+        repoLink = URL(string: repository["url"]!)
+        
+        print(packageTitle)
+        print(author)
+        print(license)
+        print(version)
+        print(packageDescription)
+        print(repoLink)
+        print(scripts)
+        
         
     }
     
