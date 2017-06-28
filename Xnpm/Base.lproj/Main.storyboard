@@ -717,13 +717,13 @@
                                     </menu>
                                 </popUpButtonCell>
                                 <connections>
-                                    <binding destination="XfG-lQ-9wD" name="content" keyPath="self.package.scripts" id="e53-kH-JP1"/>
                                     <binding destination="XfG-lQ-9wD" name="contentValues" keyPath="self.package.scripts" previousBinding="e53-kH-JP1" id="4t2-AI-T8E"/>
                                     <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.package.scripts" id="IJ7-o4-Cl5">
                                         <dictionary key="options">
                                             <string key="NSValueTransformerName">NSIsNotNil</string>
                                         </dictionary>
                                     </binding>
+                                    <binding destination="XfG-lQ-9wD" name="content" keyPath="self.package.scripts" id="e53-kH-JP1"/>
                                 </connections>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9PA-lp-zUW">
@@ -883,7 +883,7 @@
                                             <font key="font" usesAppearanceFont="YES"/>
                                         </buttonCell>
                                         <connections>
-                                            <segue destination="uD1-9O-TLP" kind="show" id="Upk-tB-2a3"/>
+                                            <segue destination="uD1-9O-TLP" kind="show" identifier="showConsole" id="Upk-tB-2a3"/>
                                         </connections>
                                     </button>
                                 </viewController>
@@ -944,7 +944,7 @@
                                     <rect key="frame" x="1" y="1" width="478" height="268"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView ambiguous="YES" importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="M31-mC-1xB">
+                                        <textView ambiguous="YES" editable="NO" selectable="NO" importsGraphics="NO" richText="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="M31-mC-1xB">
                                             <rect key="frame" x="0.0" y="0.0" width="478" height="268"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

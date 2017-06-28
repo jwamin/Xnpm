@@ -20,6 +20,8 @@ class ViewController: NSViewController {
     @IBOutlet weak var button2: NSButton!
     @IBOutlet weak var runButton: NSButton!
     
+    var consoleWindow:NSWindow?
+    
     var package:PackageAnalyser!{
         didSet{
             print("didset")
@@ -68,7 +70,20 @@ class ViewController: NSViewController {
     }
 
     @IBAction func executeScript(sender:Any){
-        print("executing script from \((sender as! NSButton).title)");
+//        print("executing script from \((sender as! NSButton).title)");
+//        let main = NSStoryboard(name : "Main", bundle: nil).instantiateController(withIdentifier: "MainWindow") as! NSWindowController
+//        let mainVc = NSStoryboard(name:"Main", bundle: nil).instantiateController(withIdentifier: "MainViewController") as! ViewController
+//        mainVc.package = package
+//        main.window?.contentViewController = mainVc
+//        main.window?.makeKeyAndOrderFront(nil)
+        if let availableConsoleWindow = consoleWindow{
+            availableConsoleWindow.makeKeyAndOrderFront(self)
+        } else {
+            self.performSegue(withIdentifier: "showConsole", sender: self)
+            consoleWindow = NSApplication.shared().windows[1]
+        }
+        
+        //let taskC = TaskController(url: package.url)
     }
 
     deinit {
