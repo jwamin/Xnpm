@@ -844,6 +844,7 @@
                                 <viewController key="viewController" id="HAe-fo-Sy0">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RI4-1z-zbA">
                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="Run" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oGy-Ml-JMV">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
@@ -858,6 +859,7 @@
                                 <viewController key="viewController" id="1kQ-6M-9Mz">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yus-Sm-J6q">
                                         <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="Button2" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MST-9D-afo">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
@@ -878,6 +880,7 @@
                                 <viewController key="viewController" id="6OT-Un-nCB">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SWO-hi-TPP">
                                         <rect key="frame" x="0.0" y="0.0" width="97" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="Console" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="o7P-Zi-cy7">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" usesAppearanceFont="YES"/>
@@ -895,6 +898,7 @@
                         </connections>
                     </touchBar>
                     <connections>
+                        <outlet property="activity" destination="uqX-bh-diE" id="4VM-RV-Z0t"/>
                         <outlet property="author" destination="989-1w-mKH" id="rdE-D9-rAL"/>
                         <outlet property="button2" destination="Yus-Sm-J6q" id="20Z-HM-a9s"/>
                         <outlet property="descriptionLabel" destination="tjI-8G-Bwm" id="km0-pd-NBk"/>
@@ -929,10 +933,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="1414"/>
         </scene>
-        <!--View Controller-->
+        <!--Console View Controller-->
         <scene sceneID="efw-hv-kWi">
             <objects>
-                <viewController id="ClD-Ah-OXu" sceneMemberID="viewController">
+                <viewController showSeguePresentationStyle="single" id="ClD-Ah-OXu" customClass="ConsoleViewController" customModule="Xnpm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="JZy-sy-ots">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -966,6 +970,9 @@
                             </scrollView>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="M31-mC-1xB" id="MC0-pA-BVz"/>
+                    </connections>
                 </viewController>
                 <customObject id="HRz-dy-J1D" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

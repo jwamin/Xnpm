@@ -9,7 +9,7 @@
 import Cocoa
 
 class ViewController: NSViewController {
-
+    
     @IBOutlet weak var mainTitle: NSTextField!
     @IBOutlet weak var author: NSTextField!
     @IBOutlet weak var descriptionLabel: NSTextField!
@@ -19,8 +19,11 @@ class ViewController: NSViewController {
     @IBOutlet weak var execButton: NSButton!
     @IBOutlet weak var button2: NSButton!
     @IBOutlet weak var runButton: NSButton!
+    @IBOutlet weak var activity: NSProgressIndicator!
     
     var consoleWindow:NSWindow?
+    var consoleViewController:ConsoleViewController?
+    var taskC:TaskController?
     
     var package:PackageAnalyser!{
         didSet{
@@ -37,7 +40,7 @@ class ViewController: NSViewController {
         }
         // Do any additional setup after loading the view.
         print(scriptDropdown.itemTitles)
-
+        
     }
     
     override func viewDidAppear() {
@@ -46,49 +49,43 @@ class ViewController: NSViewController {
     }
     
     func populateDropdown(){
+        
         print("populate dropdown")
         scriptDropdown!.removeAllItems()
         scriptDropdown!.addItems(withTitles: package.scripts as! [String])
         scriptDropdown.isEnabled = true;
         
-//        Update Touch Bar, if available
-//        if #available(OSX 10.12.2, *) {
-//            for key in scripts {
-//                
-//                touchBar
-//            }
-//        
-//        }
-        
-        
     }
     
     override var representedObject: Any? {
         didSet {
-        // Update the view, if already loaded.
+            // Update the view, if already loaded.
         }
     }
-
+    
     @IBAction func executeScript(sender:Any){
-//        print("executing script from \((sender as! NSButton).title)");
-//        let main = NSStoryboard(name : "Main", bundle: nil).instantiateController(withIdentifier: "MainWindow") as! NSWindowController
-//        let mainVc = NSStoryboard(name:"Main", bundle: nil).instantiateController(withIdentifier: "MainViewController") as! ViewController
-//        mainVc.package = package
-//        main.window?.contentViewController = mainVc
-//        main.window?.makeKeyAndOrderFront(nil)
+
         if let availableConsoleWindow = consoleWindow{
             availableConsoleWindow.makeKeyAndOrderFront(self)
         } else {
             self.performSegue(withIdentifier: "showConsole", sender: self)
             consoleWindow = NSApplication.shared().windows[1]
+            if let vc = consoleWindow?.contentViewController{
+                consoleViewController = vc as? ConsoleViewController
+            }
         }
+        taskC = TaskController(url: package.url)
+        let selectedCommand = scriptDropdown.selectedItem!.title
+        taskC?.beginTask(selectedCommand)
         
-        //let taskC = TaskController(url: package.url)
+        //activate activity monitor here
+        //activity.startAnimation(self)
+        
     }
-
+    
     deinit {
         if #available(OSX 10.12.2, *) {
-        self.view.window?.unbind(#keyPath(touchBar))
+            self.view.window?.unbind(#keyPath(touchBar))
         }
     }
     

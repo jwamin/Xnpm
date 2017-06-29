@@ -1,6 +1,6 @@
 //
 //  TaskController.m
-//  Biogen Task Runner
+//  Xnpm
 //
 //  Created by Joss Manger on 5/24/17.
 //  Copyright © 2017 Joss Manger. All rights reserved.
@@ -14,14 +14,15 @@
 {
     self = [super init];
     if (self) {
-        _path = [url path];
+        _path = [[url path]stringByDeletingLastPathComponent];
     }
     return self;
 }
 
--(void)beginTask:(NSUInteger)cmd{
+-(void)beginTask:(NSString*)cmd{
     _task = [[NSTask alloc]init];
-    NSString *cmdStr = (cmd==1) ? @"npm run dist" : @"npm run build";
+    NSString *cmdStrRoot = @"npm run ";
+    NSString *cmdStr = [cmdStrRoot stringByAppendingString:cmd];
     //NSString *fullString = [ stringByAppendingString:cmdStr];
     [_task setLaunchPath:@"/bin/bash"];
     [_task setArguments:@[@"-l",@"-c",cmdStr]];
@@ -40,7 +41,7 @@
             [outhandle waitForDataInBackgroundAndNotify];
         } else {
             NSLog(@"EOF in stdout from process, removing obs1 observer");
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"gotEnd" object:nil];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"gotEnd" object:@"got end"];
             [[NSNotificationCenter defaultCenter]removeObserver:obs1];
         }
         

@@ -1,6 +1,6 @@
 //
 //  TaskController.h
-//  Biogen Task Runner
+//  Xnpm
 //
 //  Created by Joss Manger on 5/24/17.
 //  Copyright © 2017 Joss Manger. All rights reserved.
@@ -12,6 +12,6 @@
 - (instancetype)initWithURL:(NSURL*)url;
 @property (weak) NSString *path;
 @property NSTask *task;
--(void)beginTask:(NSUInteger)cmd;
+-(void)beginTask:(NSString*)cmd;
 -(void)endTask;
 @end

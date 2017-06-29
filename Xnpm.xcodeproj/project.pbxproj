@@ -14,6 +14,7 @@
 		3D7E72F91EED907000928DB0 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7E72F81EED907000928DB0 /* WindowController.swift */; };
 		573D841F1F045D6900959A5F /* TaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = 573D841E1F045D6900959A5F /* TaskController.m */; };
 		57D142F71EF5946B002F561A /* PackageAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D142F61EF5946B002F561A /* PackageAnalyser.swift */; };
+		57FF3E441F05196000B9535D /* ConsoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FF3E431F05196000B9535D /* ConsoleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		573D841D1F045D6900959A5F /* TaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskController.h; sourceTree = "<group>"; };
 		573D841E1F045D6900959A5F /* TaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskController.m; sourceTree = "<group>"; };
 		57D142F61EF5946B002F561A /* PackageAnalyser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageAnalyser.swift; sourceTree = "<group>"; };
+		57FF3E431F05196000B9535D /* ConsoleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				3D28327B1EE777B300039AE3 /* AppDelegate.swift */,
 				3D28327D1EE777B300039AE3 /* ViewController.swift */,
+				57FF3E431F05196000B9535D /* ConsoleViewController.swift */,
 				573D841D1F045D6900959A5F /* TaskController.h */,
 				573D841E1F045D6900959A5F /* TaskController.m */,
 				57D142F61EF5946B002F561A /* PackageAnalyser.swift */,
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57FF3E441F05196000B9535D /* ConsoleViewController.swift in Sources */,
 				573D841F1F045D6900959A5F /* TaskController.m in Sources */,
 				3D28327E1EE777B300039AE3 /* ViewController.swift in Sources */,
 				3D7E72F91EED907000928DB0 /* WindowController.swift in Sources */,
