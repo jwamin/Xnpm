@@ -24,12 +24,12 @@ class ViewController: NSViewController {
     var consoleWindow:NSWindow?
     var consoleViewController:ConsoleViewController?
     var taskC:TaskController?
+    var taskRunning:Bool = false;
+    
     
     var package:PackageAnalyser!{
         didSet{
             print("didset")
-            //print(package.returndict())
-            //populateDropdown()
         }
     }
     
@@ -48,14 +48,6 @@ class ViewController: NSViewController {
         self.view.window?.bind(#keyPath(touchBar), to: self, withKeyPath: #keyPath(touchBar), options: nil)
     }
     
-    func populateDropdown(){
-        
-        print("populate dropdown")
-        scriptDropdown!.removeAllItems()
-        scriptDropdown!.addItems(withTitles: package.scripts as! [String])
-        scriptDropdown.isEnabled = true;
-        
-    }
     
     override var representedObject: Any? {
         didSet {
@@ -65,21 +57,32 @@ class ViewController: NSViewController {
     
     @IBAction func executeScript(sender:Any){
 
-        if let availableConsoleWindow = consoleWindow{
-            availableConsoleWindow.makeKeyAndOrderFront(self)
-        } else {
-            self.performSegue(withIdentifier: "showConsole", sender: self)
-            consoleWindow = NSApplication.shared().windows[1]
-            if let vc = consoleWindow?.contentViewController{
-                consoleViewController = vc as? ConsoleViewController
+        if !taskRunning {
+            if let availableConsoleWindow = consoleWindow{
+                availableConsoleWindow.makeKeyAndOrderFront(self)
+            } else {
+                self.performSegue(withIdentifier: "showConsole", sender: self)
+                consoleWindow = NSApplication.shared().windows[1]
+                if let vc = consoleWindow?.contentViewController{
+                    consoleViewController = vc as? ConsoleViewController
+                }
             }
+            activity.startAnimation(self)
+            taskC = TaskController(url: package.url)
+            let selectedCommand = scriptDropdown.selectedItem!.title
+            taskRunning = true;
+            taskC?.beginTask(selectedCommand)
+            execButton.title = "Halt"
+        } else {
+            execButton.title = "Execute"
+            taskC?.endTask()
+            taskC = nil
+            taskRunning = false
+            consoleWindow?.close()
+            consoleWindow = nil
+            activity.stopAnimation(self)
         }
-        taskC = TaskController(url: package.url)
-        let selectedCommand = scriptDropdown.selectedItem!.title
-        taskC?.beginTask(selectedCommand)
-        
-        //activate activity monitor here
-        //activity.startAnimation(self)
+
         
     }
     

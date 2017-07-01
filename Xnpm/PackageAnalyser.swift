@@ -70,8 +70,10 @@ class PackageAnalyser: NSObject {
         license = dictionary["license"] as! String
         version = dictionary["version"] as! String
         packageDescription = dictionary["description"] as! String
-        let repository = dictionary["repository"] as! [String:String]
-        repoLink = URL(string: repository["url"]!)
+        if let repository = dictionary["repository"] as? [String:String]{
+            repoLink = URL(string: repository["url"]!)
+        }
+        
         
         print(packageTitle)
         print(author)
@@ -88,19 +90,6 @@ class PackageAnalyser: NSObject {
         return dictionary
     }
     
-    //        do{
-    //            let data = try NSData(contentsOfFile: url.absoluteString, options: .uncached){
-    //                do {
-    //
-    //                    let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String:Any]
-    //                    dictionary = parsedData as! [String:Any]
-    //
-    //                    print(dictionary)
-    //
-    //                } catch let error as NSError {
-    //                    print(error)
-    //                }
-    //            }
-    //    }
+
     
 }
