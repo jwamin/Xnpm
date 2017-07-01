@@ -29,17 +29,20 @@ class ViewController: NSViewController {
     
     var package:PackageAnalyser!{
         didSet{
-            print("didset")
+            print("Xnpm "+package.packageTitle)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if #available(OSX 10.12.2, *) {
             bind(#keyPath(touchBar), to: self, withKeyPath: #keyPath(touchBar), options: nil)
         }
+        
         // Do any additional setup after loading the view.
-        print(scriptDropdown.itemTitles)
+        self.view.window?.title = "Xnpm "+package.packageTitle
+        
         
     }
     
@@ -63,6 +66,7 @@ class ViewController: NSViewController {
             } else {
                 self.performSegue(withIdentifier: "showConsole", sender: self)
                 consoleWindow = NSApplication.shared().windows[1]
+                consoleWindow?.title = package.packageTitle + " Console"
                 if let vc = consoleWindow?.contentViewController{
                     consoleViewController = vc as? ConsoleViewController
                 }
@@ -71,6 +75,7 @@ class ViewController: NSViewController {
             taskC = TaskController(url: package.url)
             let selectedCommand = scriptDropdown.selectedItem!.title
             taskRunning = true;
+            scriptDropdown.isEnabled = false;
             taskC?.beginTask(selectedCommand)
             execButton.title = "Halt"
         } else {
@@ -78,6 +83,7 @@ class ViewController: NSViewController {
             taskC?.endTask()
             taskC = nil
             taskRunning = false
+            scriptDropdown.isEnabled = true;
             consoleWindow?.close()
             consoleWindow = nil
             activity.stopAnimation(self)

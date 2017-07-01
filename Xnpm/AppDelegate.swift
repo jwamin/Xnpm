@@ -30,6 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let main = NSStoryboard(name : "Main", bundle: nil).instantiateController(withIdentifier: "MainWindow") as! NSWindowController
         let mainVc = NSStoryboard(name:"Main", bundle: nil).instantiateController(withIdentifier: "MainViewController") as! ViewController
         mainVc.package = package
+        main.window?.title = "Xnpm - "+package.packageTitle
         main.window?.contentViewController = mainVc
         main.window?.makeKeyAndOrderFront(nil)
     }
