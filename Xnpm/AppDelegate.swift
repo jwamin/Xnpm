@@ -20,11 +20,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             // Fallback on earlier versions
         }
     }
-
+    
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
+    
     func handleOpen(url:URL){
         let package = PackageAnalyser(packageUrl: url)
         let main = NSStoryboard(name : "Main", bundle: nil).instantiateController(withIdentifier: "MainWindow") as! NSWindowController
@@ -50,18 +50,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         openPanel.canChooseDirectories = false;
         
         openPanel.begin(completionHandler: {
-                number in
+            number in
             if(openPanel.url!.pathComponents.last == "package.json"){
                 NSDocumentController.shared().noteNewRecentDocumentURL(openPanel.url!)
                 self.handleOpen(url: openPanel.url!)
             } else {
-                print("error, not a package // should be alertdialog here")
+                let alert = NSAlert()
+                alert.alertStyle = .critical
+                alert.messageText = "\(openPanel.url!) is not a valid npm package manifest (package.json)"
+                alert.runModal()
             }
             
         })
     }
     
     
-
+    
 }
 
