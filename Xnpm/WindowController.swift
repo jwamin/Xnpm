@@ -22,14 +22,14 @@ class WindowController: NSWindowController {
 
 }
 
-@available(OSX 10.12.2, *)
-extension WindowController:NSTouchBarDelegate{
-    
-    override func makeTouchBar() -> NSTouchBar? {
-        let touchBar = NSTouchBar()
-        touchBar.delegate = self
-        
-        return touchBar
-    }
-    
-}
+//@available(OSX 10.12.2, *)
+//extension WindowController:NSTouchBarDelegate{
+//    
+//    override func makeTouchBar() -> NSTouchBar? {
+//        let touchBar = NSTouchBar()
+//        touchBar.delegate = self
+//        
+//        return touchBar
+//    }
+//    
+//}

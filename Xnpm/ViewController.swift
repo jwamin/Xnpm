@@ -36,9 +36,9 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(OSX 10.12.2, *) {
-            bind(#keyPath(touchBar), to: self, withKeyPath: #keyPath(touchBar), options: nil)
-        }
+//        if #available(OSX 10.12.2, *) {
+//            bind(#keyPath(touchBar), to: self, withKeyPath: #keyPath(touchBar), options: nil)
+//        }
         
         // Do any additional setup after loading the view.
         self.view.window?.title = "Xnpm "+package.packageTitle
