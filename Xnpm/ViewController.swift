@@ -47,8 +47,10 @@ class ViewController: NSViewController {
     }
     
     override func viewDidAppear() {
-        self.view.window?.unbind(#keyPath(touchBar)) // unbind first
-        self.view.window?.bind(#keyPath(touchBar), to: self, withKeyPath: #keyPath(touchBar), options: nil)
+        if #available(OSX 10.12.2, *) {
+            self.view.window?.unbind(#keyPath(touchBar)) // unbind first
+            self.view.window?.bind(#keyPath(touchBar), to: self, withKeyPath: #keyPath(touchBar), options: nil)
+        }
     }
     
     

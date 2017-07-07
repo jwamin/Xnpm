@@ -2,10 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2073" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="12062"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.1" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -838,73 +836,16 @@
                             <constraint firstItem="mZD-QC-Ugx" firstAttribute="top" secondItem="9PA-lp-zUW" secondAttribute="bottom" constant="8" id="yxc-te-6Fc"/>
                         </constraints>
                     </view>
-                    <touchBar key="touchBar" customizationIdentifier="vcbar" id="5tr-L6-XGv">
-                        <touchBarItems>
-                            <touchBarItem id="5jw-no-Ybu">
-                                <viewController key="viewController" id="HAe-fo-Sy0">
-                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RI4-1z-zbA">
-                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
-                                        <buttonCell key="cell" type="push" title="Run" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oGy-Ml-JMV">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" usesAppearanceFont="YES"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="executeScriptWithSender:" target="XfG-lQ-9wD" id="51V-CL-oBZ"/>
-                                        </connections>
-                                    </button>
-                                </viewController>
-                            </touchBarItem>
-                            <touchBarItem id="QQu-0H-U5E">
-                                <viewController key="viewController" id="1kQ-6M-9Mz">
-                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yus-Sm-J6q">
-                                        <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
-                                        <buttonCell key="cell" type="push" title="Button2" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MST-9D-afo">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" usesAppearanceFont="YES"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="executeScriptWithSender:" target="XfG-lQ-9wD" id="m1D-2n-aNW"/>
-                                        </connections>
-                                    </button>
-                                </viewController>
-                                <size key="designTimeSize" width="90" height="30"/>
-                            </touchBarItem>
-                            <touchBarPopoverItem collapsedRepresentationLabel="Scripts" id="XEx-rJ-CM2">
-                                <touchBar key="popoverTouchBar" id="vyl-te-FZF">
-                                    <nil name="touchBarItems"/>
-                                </touchBar>
-                            </touchBarPopoverItem>
-                            <touchBarItem id="65T-Gk-O4q">
-                                <viewController key="viewController" id="6OT-Un-nCB">
-                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SWO-hi-TPP">
-                                        <rect key="frame" x="0.0" y="0.0" width="97" height="30"/>
-                                        <buttonCell key="cell" type="push" title="Console" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="o7P-Zi-cy7">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" usesAppearanceFont="YES"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <segue destination="uD1-9O-TLP" kind="show" identifier="showConsole" id="Upk-tB-2a3"/>
-                                        </connections>
-                                    </button>
-                                </viewController>
-                                <size key="designTimeSize" width="97" height="30"/>
-                            </touchBarItem>
-                        </touchBarItems>
-                        <connections>
-                            <outlet property="delegate" destination="XfG-lQ-9wD" id="W1w-XW-naf"/>
-                        </connections>
-                    </touchBar>
                     <connections>
                         <outlet property="activity" destination="uqX-bh-diE" id="4VM-RV-Z0t"/>
                         <outlet property="author" destination="989-1w-mKH" id="rdE-D9-rAL"/>
-                        <outlet property="button2" destination="Yus-Sm-J6q" id="20Z-HM-a9s"/>
                         <outlet property="descriptionLabel" destination="tjI-8G-Bwm" id="km0-pd-NBk"/>
                         <outlet property="execButton" destination="yvy-gU-niP" id="HjP-e7-FTQ"/>
                         <outlet property="license" destination="fek-X6-G3o" id="eb3-1V-EUK"/>
                         <outlet property="mainTitle" destination="eoe-g7-CSp" id="GMx-Cv-eGy"/>
                         <outlet property="repoLink" destination="ShX-gQ-Ccw" id="7OP-AF-86I"/>
-                        <outlet property="runButton" destination="RI4-1z-zbA" id="eqD-RS-t0b"/>
                         <outlet property="scriptDropdown" destination="mZD-QC-Ugx" id="eG8-gy-76f"/>
+                        <segue destination="uD1-9O-TLP" kind="show" identifier="showConsole" id="zkf-qa-pgP"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -942,14 +883,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <clipView key="contentView" ambiguous="YES" id="A3k-BQ-8oU">
-                                    <rect key="frame" x="1" y="1" width="478" height="268"/>
+                                    <rect key="frame" x="1" y="1" width="463" height="268"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView ambiguous="YES" editable="NO" selectable="NO" importsGraphics="NO" richText="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="M31-mC-1xB">
-                                            <rect key="frame" x="0.0" y="0.0" width="478" height="268"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="463" height="268"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="478" height="268"/>
+                                            <size key="minSize" width="463" height="268"/>
                                             <size key="maxSize" width="480" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
@@ -961,7 +902,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="WXu-Vf-6Bv">
-                                    <rect key="frame" x="463" y="1" width="16" height="268"/>
+                                    <rect key="frame" x="464" y="1" width="15" height="268"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
