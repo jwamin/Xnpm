@@ -78,6 +78,7 @@ class ViewController: NSViewController {
             scriptDropdown.isEnabled = false;
             taskC?.beginTask(selectedCommand)
             execButton.title = "Halt"
+            NotificationCenter.default.addObserver(self, selector: #selector(executeScript), name: NSNotification.Name(rawValue: "gotEnd"), object: nil)
         } else {
             execButton.title = "Execute"
             taskC?.endTask()
@@ -87,6 +88,7 @@ class ViewController: NSViewController {
             consoleWindow?.close()
             consoleWindow = nil
             activity.stopAnimation(self)
+            NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "gotEnd"), object: nil)
         }
 
         
