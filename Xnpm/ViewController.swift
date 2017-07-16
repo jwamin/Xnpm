@@ -61,16 +61,21 @@ class ViewController: NSViewController {
     }
     
     @IBAction func executeScript(sender:Any){
-
+        print("task running \(taskRunning)")
         if !taskRunning {
             if let availableConsoleWindow = consoleWindow{
                 availableConsoleWindow.makeKeyAndOrderFront(self)
             } else {
-                self.performSegue(withIdentifier: "showConsole", sender: self)
-                consoleWindow = NSApplication.shared().windows[1]
+                let storyboard = NSStoryboard(name: "Main", bundle: nil)
+                print(storyboard)
+                let windowController = storyboard.instantiateController(withIdentifier: "ConsoleViewWindow") as! NSWindowController
+                print(windowController)
+                consoleWindow = windowController.window!// this is the dodgy bit, gets window in list, rather than specific, correct window
                 consoleWindow?.title = package.packageTitle + " Console"
                 if let vc = consoleWindow?.contentViewController{
                     consoleViewController = vc as? ConsoleViewController
+                    print(vc)
+                    windowController.showWindow(self)
                 }
             }
             activity.startAnimation(self)
@@ -82,13 +87,17 @@ class ViewController: NSViewController {
             execButton.title = "Halt"
             NotificationCenter.default.addObserver(self, selector: #selector(executeScript), name: NSNotification.Name(rawValue: "gotEnd"), object: nil)
         } else {
+            if let iswindow = consoleWindow{
+                iswindow.close()
+                consoleWindow = nil
+            }
             execButton.title = "Execute"
             taskC?.endTask()
             taskC = nil
             taskRunning = false
             scriptDropdown.isEnabled = true;
-            consoleWindow?.close()
-            consoleWindow = nil
+            
+
             activity.stopAnimation(self)
             NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "gotEnd"), object: nil)
         }

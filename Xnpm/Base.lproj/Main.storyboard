@@ -678,7 +678,7 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="82" y="606"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -845,19 +845,18 @@
                         <outlet property="mainTitle" destination="eoe-g7-CSp" id="GMx-Cv-eGy"/>
                         <outlet property="repoLink" destination="ShX-gQ-Ccw" id="7OP-AF-86I"/>
                         <outlet property="scriptDropdown" destination="mZD-QC-Ugx" id="eG8-gy-76f"/>
-                        <segue destination="uD1-9O-TLP" kind="show" identifier="showConsole" id="zkf-qa-pgP"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="fWQ-ft-nlN"/>
             </objects>
-            <point key="canvasLocation" x="75" y="738"/>
+            <point key="canvasLocation" x="782" y="606"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="ji3-sz-OuU">
             <objects>
-                <windowController id="uD1-9O-TLP" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="zYB-Yl-aUf">
+                <windowController storyboardIdentifier="ConsoleViewWindow" id="uD1-9O-TLP" sceneMemberID="viewController">
+                    <window key="window" title="Console" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="zYB-Yl-aUf">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="372" width="480" height="270"/>
@@ -869,12 +868,12 @@
                 </windowController>
                 <customObject id="DQl-16-XbC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="1414"/>
+            <point key="canvasLocation" x="82" y="1021"/>
         </scene>
         <!--Console View Controller-->
         <scene sceneID="efw-hv-kWi">
             <objects>
-                <viewController showSeguePresentationStyle="single" id="ClD-Ah-OXu" customClass="ConsoleViewController" customModule="Xnpm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="consoleView" showSeguePresentationStyle="single" id="ClD-Ah-OXu" customClass="ConsoleViewController" customModule="Xnpm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="JZy-sy-ots">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -909,12 +908,12 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="textView" destination="M31-mC-1xB" id="MC0-pA-BVz"/>
+                        <outlet property="textView" destination="M31-mC-1xB" id="dsk-LL-vpo"/>
                     </connections>
                 </viewController>
                 <customObject id="HRz-dy-J1D" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="782" y="1021"/>
+            <point key="canvasLocation" x="769" y="1021"/>
         </scene>
     </scenes>
 </document>
