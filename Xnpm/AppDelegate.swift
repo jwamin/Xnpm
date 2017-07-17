@@ -11,8 +11,14 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
+    var projects:Array<String>?
+    var listView:ListProtocol?
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        
+      
+       
         
 //        if #available(OSX 10.12.2, *) {
 //            NSApplication.shared().isAutomaticCustomizeTouchBarMenuItemEnabled = true
@@ -41,6 +47,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
     
+    func checkandAddToDefaults(url:URL){
+        var projects = UserDefaults.standard.array(forKey: "projects") as? Array<String>
+        var match:Bool = false;
+        if let areProjects = projects{
+            for u in areProjects.enumerated(){
+                if(url.absoluteString == u.element){
+                    match = true;
+                }
+            }
+        }
+        if(!match){
+            var array = projects
+            array?.append(url.absoluteString)
+            let immutableArray = NSArray(array: array!)
+            print(immutableArray)
+            UserDefaults.standard.set(immutableArray, forKey: "projects")
+            UserDefaults.standard.synchronize()
+            listView?.updateNotify()
+        }
+
+    }
+    
+    func addToDefaults(url:URL){
+        
+    }
+    
     @IBAction func openAction(_ sender: Any) {
         
         print("open called")
@@ -53,6 +85,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             number in
             if(openPanel.url!.pathComponents.last == "package.json"){
                 NSDocumentController.shared().noteNewRecentDocumentURL(openPanel.url!)
+                self.checkandAddToDefaults(url: openPanel.url!)
                 self.handleOpen(url: openPanel.url!)
             } else {
                 let alert = NSAlert()

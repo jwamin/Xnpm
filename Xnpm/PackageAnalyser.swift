@@ -65,11 +65,11 @@ class PackageAnalyser: NSObject {
         let arr = dictionary["scripts"] as! [String:String]
         scripts = NSArray(array: Array(arr.keys))
         
-        packageTitle = dictionary["name"] as! String
-        author = dictionary["author"] as! String
-        license = dictionary["license"] as! String
-        version = dictionary["version"] as! String
-        packageDescription = dictionary["description"] as! String
+        packageTitle = dictionary["name"] as? String ?? "none"
+        author = dictionary["author"] as? String ?? "none"
+        license = dictionary["license"] as? String ?? "none"
+        version = dictionary["version"] as? String ?? "none"
+        packageDescription = dictionary["description"] as? String ?? "none"
         if let repository = dictionary["repository"] as? [String:String]{
             repoLink = URL(string: repository["url"]!)
         }
