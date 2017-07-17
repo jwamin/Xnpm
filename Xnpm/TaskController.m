@@ -10,11 +10,12 @@
 
 @implementation TaskController
 
-- (instancetype)initWithURL:(NSURL*)url
+- (instancetype)initWithURL:(NSURL *)url withIdentifier:(NSString *)identifier
 {
     self = [super init];
     if (self) {
         _path = [[url path]stringByDeletingLastPathComponent];
+        _identifier = identifier;
     }
     return self;
 }
@@ -37,11 +38,12 @@
         NSData *data = [outhandle availableData];
         if(data.length>0){
             NSString *str = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"gotOut" object:str];
+            NSDictionary *dict = @{@"str":str,@"sender":_identifier};
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"gotOut" object:dict];
             [outhandle waitForDataInBackgroundAndNotify];
         } else {
             NSLog(@"EOF in stdout from process, removing obs1 observer");
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"gotEnd" object:@"got end"];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"gotEnd" object:_identifier];
             [[NSNotificationCenter defaultCenter]removeObserver:obs1];
         }
         

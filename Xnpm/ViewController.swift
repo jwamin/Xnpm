@@ -36,9 +36,9 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if #available(OSX 10.12.2, *) {
-//            bind(#keyPath(touchBar), to: self, withKeyPath: #keyPath(touchBar), options: nil)
-//        }
+        //        if #available(OSX 10.12.2, *) {
+        //            bind(#keyPath(touchBar), to: self, withKeyPath: #keyPath(touchBar), options: nil)
+        //        }
         
         // Do any additional setup after loading the view.
         self.view.window?.title = "Xnpm "+package.packageTitle
@@ -61,7 +61,6 @@ class ViewController: NSViewController {
     }
     
     @IBAction func executeScript(sender:Any){
-        print("task running \(taskRunning)")
         if !taskRunning {
             if let availableConsoleWindow = consoleWindow{
                 availableConsoleWindow.makeKeyAndOrderFront(self)
@@ -74,12 +73,13 @@ class ViewController: NSViewController {
                 consoleWindow?.title = package.packageTitle + " Console"
                 if let vc = consoleWindow?.contentViewController{
                     consoleViewController = vc as? ConsoleViewController
+                    consoleViewController?.parentController = self
                     print(vc)
                     windowController.showWindow(self)
                 }
             }
             activity.startAnimation(self)
-            taskC = TaskController(url: package.url)
+            taskC = TaskController(url: package.url!, withIdentifier: package.packageTitle)
             let selectedCommand = scriptDropdown.selectedItem!.title
             taskRunning = true;
             scriptDropdown.isEnabled = false;
@@ -87,23 +87,39 @@ class ViewController: NSViewController {
             execButton.title = "Halt"
             NotificationCenter.default.addObserver(self, selector: #selector(executeScript), name: NSNotification.Name(rawValue: "gotEnd"), object: nil)
         } else {
-            if let iswindow = consoleWindow{
-                iswindow.close()
-                consoleWindow = nil
-            }
-            execButton.title = "Execute"
-            taskC?.endTask()
-            taskC = nil
-            taskRunning = false
-            scriptDropdown.isEnabled = true;
             
-
-            activity.stopAnimation(self)
-            NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "gotEnd"), object: nil)
+            guard let notification = sender as? NSNotification else {
+                print("not a notification")
+                closeProcess()
+                return
+            }
+            
+            let message = notification.object as! String
+            if (message==package.packageTitle){
+                closeProcess()
+            }
+            
         }
-
+        
         
     }
+    
+    private func closeProcess(){
+        consoleWindow?.close()
+        consoleWindow = nil
+        
+        execButton.title = "Execute"
+        taskC?.endTask()
+        taskC = nil
+        taskRunning = false
+        scriptDropdown.isEnabled = true;
+        
+        
+        activity.stopAnimation(self)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "gotEnd"), object: nil)
+    }
+    
+    
     
     deinit {
         if #available(OSX 10.12.2, *) {

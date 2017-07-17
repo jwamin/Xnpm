@@ -11,18 +11,36 @@ import Cocoa
 class ConsoleViewController: NSViewController {
 
     @IBOutlet var textView: NSTextView!
+    var parentController:ViewController?
+    
+    
     override func viewDidLoad() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleText), name: NSNotification.Name(rawValue: "gotOut"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleEnd), name: NSNotification.Name(rawValue: "gotEnd"), object: nil)
     }
     
     override func awakeFromNib() {
+        
         print("hello world")
+        
     }
     
     func handleText(notification:NSNotification){
         print(notification.object ?? "none")
-        updateTextView(str: notification.object as! String)
+        
+        let dict = notification.object as! NSDictionary
+        let str = dict.object(forKey: "str") as! String
+        let notificationID = dict.object(forKey: "sender") as! String
+        if let identifier = parentController?.package.packageTitle{
+            if(identifier==notificationID){
+               updateTextView(str: str)
+            }
+            
+            
+        }
+        
+        
+        
     }
     func handleEnd(notification:NSNotification){
         print(notification.object ?? "none")

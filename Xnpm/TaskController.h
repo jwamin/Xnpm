@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface TaskController : NSObject
-- (instancetype)initWithURL:(NSURL*)url;
+- (instancetype)initWithURL:(NSURL*)url withIdentifier:(NSString*)identifier;
 @property (weak) NSString *path;
+@property (weak) NSString *identifier;
 @property NSTask *task;
 -(void)beginTask:(NSString*)cmd;
 -(void)endTask;
