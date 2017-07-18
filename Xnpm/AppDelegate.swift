@@ -48,19 +48,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func checkandAddToDefaults(url:URL){
-        var projects = UserDefaults.standard.array(forKey: "projects") as? Array<String>
+        print(url)
+        let projects = UserDefaults.standard.array(forKey: "projects") as? Array<String> ?? []
         var match:Bool = false;
-        if let areProjects = projects{
-            for u in areProjects.enumerated(){
+
+            for u in projects.enumerated(){
                 if(url.absoluteString == u.element){
                     match = true;
                 }
             }
-        }
+        
         if(!match){
             var array = projects
-            array?.append(url.absoluteString)
-            let immutableArray = NSArray(array: array!)
+            array.append(url.absoluteString)
+            let immutableArray = NSArray(array: array)
             print(immutableArray)
             UserDefaults.standard.set(immutableArray, forKey: "projects")
             UserDefaults.standard.synchronize()
