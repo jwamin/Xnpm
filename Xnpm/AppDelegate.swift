@@ -82,20 +82,37 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         openPanel.allowedFileTypes = ["json"];
         openPanel.canChooseDirectories = false;
         
-        openPanel.begin(completionHandler: {
-            number in
-            if(openPanel.url!.pathComponents.last == "package.json"){
-                NSDocumentController.shared().noteNewRecentDocumentURL(openPanel.url!)
-                self.checkandAddToDefaults(url: openPanel.url!)
-                self.handleOpen(url: openPanel.url!)
-            } else {
+        func completionHandler(number:Int){
+            
+            func alert(_ message:String){
                 let alert = NSAlert()
                 alert.alertStyle = .critical
-                alert.messageText = "\(openPanel.url!) is not a valid npm package manifest (package.json)"
+                alert.messageText = "\(message)"
                 alert.runModal()
             }
             
-        })
+            if let gotURL = openPanel.url{
+                if(gotURL.pathComponents.last == "package.json"){
+                    NSDocumentController.shared().noteNewRecentDocumentURL(gotURL)
+                    self.checkandAddToDefaults(url: gotURL)
+                    self.handleOpen(url: gotURL)
+                } else {
+                    alert("\(gotURL) is not a valid npm package manifest (package.json)")
+                }
+                
+            } else {
+                alert("There was an error")
+            }
+            
+        }
+        guard let window = sender as? NSWindow else {
+            openPanel.begin(completionHandler: completionHandler)
+            return
+        }
+        print("didnt fall through")
+            openPanel.beginSheetModal(for: window, completionHandler: completionHandler)
+        
+        
     }
     
     

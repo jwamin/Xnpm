@@ -29,6 +29,7 @@
 		3D7E72F81EED907000928DB0 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		3D977BFC1F1D476E008A6350 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		3D977BFE1F1D51D0008A6350 /* ListProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListProtocol.swift; sourceTree = "<group>"; };
+		3DFF43D21F1E84F6002EF027 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		573D841C1F045D6800959A5F /* Xnpm-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Xnpm-Bridging-Header.h"; sourceTree = "<group>"; };
 		573D841D1F045D6900959A5F /* TaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskController.h; sourceTree = "<group>"; };
 		573D841E1F045D6900959A5F /* TaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskController.m; sourceTree = "<group>"; };
@@ -50,6 +51,7 @@
 		3D28326F1EE777B200039AE3 = {
 			isa = PBXGroup;
 			children = (
+				3DFF43D21F1E84F6002EF027 /* README.md */,
 				3D28327A1EE777B300039AE3 /* Xnpm */,
 				3D2832791EE777B300039AE3 /* Products */,
 			);
