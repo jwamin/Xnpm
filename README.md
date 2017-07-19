@@ -11,12 +11,12 @@ Written in Swift with Objective-C components.
 * Adds opened projects to list view for opening.
 * Stores projects in NSUserDefaults
 * Error handling when wrong file is selected.
+* OpenPanel sheet modal on List view controller.
+* Table view events and bindings, double click, removeAtIndex, delete key.
 
 ## TODO
-* OpenPanel modal on List view controller.
 * Console styling for console window
 * Richer interface utilising more design guidelines
-* Table view events, double click(done), removeAtIndex, delete key.
 * Handle errors on incorrect / poorly formed JSON.
 * remove / rearrage Project list, clear.
 * Clean up NSMenus

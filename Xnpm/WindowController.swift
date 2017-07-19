@@ -10,6 +10,11 @@ import Cocoa
 
 class WindowController: NSWindowController {
 
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        shouldCascadeWindows = true;
+    }
+    
     override func windowDidLoad() {
         super.windowDidLoad()
     
@@ -20,21 +25,6 @@ class WindowController: NSWindowController {
     }
 
 
-}
-
-
-class MyCrazyValueTransformer:ValueTransformer{
-    public func transformedValue(value: AnyObject?) -> AnyObject? {
-        let retval = value
-        
-        if let index = value as? Int {
-            if(UInt(index) == UInt.max){
-                return false as AnyObject
-            }
-        }
-        
-        return retval
-    }
 }
 
 //@available(OSX 10.12.2, *)

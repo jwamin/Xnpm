@@ -663,7 +663,7 @@
         <!--Window Controller-->
         <scene sceneID="oSS-Ti-ywg">
             <objects>
-                <windowController id="qbK-9f-TDD" sceneMemberID="viewController">
+                <windowController id="qbK-9f-TDD" customClass="WindowController" customModule="Xnpm" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Xnpm" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="YhH-0r-ea6">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -851,7 +851,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController storyboardIdentifier="MainWindow" id="B8D-0N-5wS" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="MainWindow" id="B8D-0N-5wS" customClass="WindowController" customModule="Xnpm" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -1043,7 +1043,7 @@
         <!--Window Controller-->
         <scene sceneID="ji3-sz-OuU">
             <objects>
-                <windowController storyboardIdentifier="ConsoleViewWindow" id="uD1-9O-TLP" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="ConsoleViewWindow" id="uD1-9O-TLP" customClass="WindowController" customModule="Xnpm" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Console" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="zYB-Yl-aUf">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>

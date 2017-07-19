@@ -75,13 +75,13 @@ class PackageAnalyser: NSObject {
         }
         
         
-        print(packageTitle)
-        print(author)
-        print(license)
-        print(version)
-        print(packageDescription)
-        print(repoLink)
-        print(scripts)
+//        print(packageTitle)
+//        print(author)
+//        print(license)
+//        print(version)
+//        print(packageDescription)
+//        print(repoLink)
+//        print(scripts)
         
         
     }

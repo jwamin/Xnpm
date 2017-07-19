@@ -32,6 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func handleOpen(url:URL){
+        print(NSApplication.shared().windows)
         let package = PackageAnalyser(packageUrl: url)
         let main = NSStoryboard(name : "Main", bundle: nil).instantiateController(withIdentifier: "MainWindow") as! NSWindowController
         let mainVc = NSStoryboard(name:"Main", bundle: nil).instantiateController(withIdentifier: "MainViewController") as! ViewController
