@@ -15,15 +15,16 @@ Written in Swift with Objective-C components.
 * Table view events and bindings, double click, removeAtIndex, delete key.
 
 ## TODO
-* Console styling for console window
-* Richer interface utilising more design guidelines
+* Richer interface utilising more design guidelines.
 * Handle errors on incorrect / poorly formed JSON.
 * remove / rearrage Project list, clear.
 * Clean up NSMenus
-* Refresh projects with update button / lifecycle method
+* Refresh projects with update button / lifecycle method (done with button, window became key delegate method)
 * Icons / Images
 * More NSDocumentController functionality? Use instead of NSUD to handle previously opened files.
-* Open `package.json` in default external text editor
+* Open `package.json` in default external text editor (done)
+* detection of Node Modules folder, status lights, `npm i` button
+* hide `postinstall` task from scripts dropdown (done)
 * TouchBar
 
 ### Techniques Used

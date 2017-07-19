@@ -62,8 +62,9 @@ class PackageAnalyser: NSObject {
         
         
         
-        let arr = dictionary["scripts"] as! [String:String]
-        scripts = NSArray(array: Array(arr.keys))
+        var dict = dictionary["scripts"] as! [String:String]
+            dict.removeValue(forKey: "postinstall")
+        scripts = NSArray(array: Array(dict.keys))
         
         packageTitle = dictionary["name"] as? String ?? "none"
         author = dictionary["author"] as? String ?? "none"

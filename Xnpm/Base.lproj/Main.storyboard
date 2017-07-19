@@ -924,7 +924,7 @@
                                 <rect key="frame" x="444" y="64" width="16" height="16"/>
                             </progressIndicator>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoe-g7-CSp">
-                                <rect key="frame" x="18" y="263" width="396" height="17"/>
+                                <rect key="frame" x="18" y="263" width="40" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Xhp-0b-55x">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -932,17 +932,6 @@
                                 </textFieldCell>
                                 <connections>
                                     <binding destination="XfG-lQ-9wD" name="value" keyPath="self.package.packageTitle" id="6sJ-Yi-lRW"/>
-                                </connections>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHx-t8-h82">
-                                <rect key="frame" x="420" y="263" width="42" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="v.1.0.4" id="Hcd-UK-X4l">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.package.version" id="zNl-w5-lsh"/>
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fek-X6-G3o">
@@ -992,15 +981,52 @@
                                     <binding destination="XfG-lQ-9wD" name="value" keyPath="self.package.repoLink" id="V1G-36-jjT"/>
                                 </connections>
                             </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N71-VR-GQI">
+                                <rect key="frame" x="439" y="262" width="21" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="Of9-Hq-a6v"/>
+                                    <constraint firstAttribute="height" constant="19" id="yUA-EW-CQA"/>
+                                </constraints>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSActionTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jZe-rf-5Yt">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="editInExternalEditor:" target="XfG-lQ-9wD" id="9Ky-eI-e6e"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MjB-fi-TJF">
+                                <rect key="frame" x="410" y="262" width="21" height="21"/>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PPH-or-caW">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="refresh:" target="XfG-lQ-9wD" id="8GG-kj-YJb"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHx-t8-h82">
+                                <rect key="frame" x="362" y="265" width="42" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="v.1.0.4" id="Hcd-UK-X4l">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.package.version" id="zNl-w5-lsh"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="MjB-fi-TJF" firstAttribute="leading" secondItem="sHx-t8-h82" secondAttribute="trailing" constant="8" id="0qC-qc-Bhf"/>
                             <constraint firstItem="9PA-lp-zUW" firstAttribute="top" secondItem="ShX-gQ-Ccw" secondAttribute="bottom" constant="20" id="53J-U3-YkJ"/>
                             <constraint firstAttribute="trailing" secondItem="tjI-8G-Bwm" secondAttribute="trailing" constant="20" id="5sj-4J-7Jt"/>
-                            <constraint firstItem="sHx-t8-h82" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="7BD-a8-wEh"/>
                             <constraint firstItem="yvy-gU-niP" firstAttribute="top" secondItem="mZD-QC-Ugx" secondAttribute="bottom" constant="20" id="CjP-Wd-yzk"/>
+                            <constraint firstItem="N71-VR-GQI" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="18" id="DBF-Cb-Fpq"/>
                             <constraint firstAttribute="trailing" secondItem="uqX-bh-diE" secondAttribute="trailing" constant="20" id="EWp-1K-xcS"/>
                             <constraint firstAttribute="trailing" secondItem="989-1w-mKH" secondAttribute="trailing" constant="20" id="EvP-xW-MzU"/>
                             <constraint firstItem="eoe-g7-CSp" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="GjP-Tn-cY7"/>
+                            <constraint firstItem="sHx-t8-h82" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="18" id="HkM-2F-Iop"/>
                             <constraint firstItem="ShX-gQ-Ccw" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="IcX-ur-cW4"/>
                             <constraint firstItem="yvy-gU-niP" firstAttribute="top" secondItem="uqX-bh-diE" secondAttribute="bottom" constant="23" id="NCk-C1-eQK"/>
                             <constraint firstItem="tjI-8G-Bwm" firstAttribute="top" secondItem="989-1w-mKH" secondAttribute="bottom" constant="8" id="Opf-71-JPi"/>
@@ -1011,16 +1037,19 @@
                             <constraint firstItem="fek-X6-G3o" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="TF6-nJ-WTy"/>
                             <constraint firstAttribute="trailing" secondItem="ShX-gQ-Ccw" secondAttribute="trailing" constant="20" id="UY4-BY-iyJ"/>
                             <constraint firstItem="mZD-QC-Ugx" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="WGm-KU-qbk"/>
+                            <constraint firstItem="MjB-fi-TJF" firstAttribute="height" secondItem="N71-VR-GQI" secondAttribute="height" id="Xc3-4T-Y5H"/>
                             <constraint firstAttribute="trailing" secondItem="fek-X6-G3o" secondAttribute="trailing" constant="20" id="YdH-IG-0ME"/>
+                            <constraint firstAttribute="trailing" secondItem="N71-VR-GQI" secondAttribute="trailing" constant="20" id="YgE-Zr-NUx"/>
                             <constraint firstItem="989-1w-mKH" firstAttribute="top" secondItem="eoe-g7-CSp" secondAttribute="bottom" constant="8" id="cKD-uI-amx"/>
                             <constraint firstItem="uqX-bh-diE" firstAttribute="leading" secondItem="mZD-QC-Ugx" secondAttribute="trailing" constant="8" id="dGK-PI-s3m"/>
+                            <constraint firstItem="MjB-fi-TJF" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="18" id="dtE-Zf-5KI"/>
                             <constraint firstAttribute="trailing" secondItem="yvy-gU-niP" secondAttribute="trailing" constant="20" id="fUo-sx-Eq1"/>
                             <constraint firstItem="yvy-gU-niP" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="g2C-HZ-z7C"/>
-                            <constraint firstAttribute="trailing" secondItem="sHx-t8-h82" secondAttribute="trailing" constant="20" id="gEm-0z-dAi"/>
                             <constraint firstAttribute="bottom" secondItem="yvy-gU-niP" secondAttribute="bottom" constant="20" id="id1-LB-DQq"/>
-                            <constraint firstItem="sHx-t8-h82" firstAttribute="leading" secondItem="eoe-g7-CSp" secondAttribute="trailing" constant="10" id="m1M-Bj-HQ0"/>
                             <constraint firstItem="9PA-lp-zUW" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="mlp-qm-Yy3"/>
+                            <constraint firstItem="MjB-fi-TJF" firstAttribute="width" secondItem="N71-VR-GQI" secondAttribute="width" id="nxT-nD-UzZ"/>
                             <constraint firstItem="eoe-g7-CSp" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="ugX-cN-S4c"/>
+                            <constraint firstItem="N71-VR-GQI" firstAttribute="leading" secondItem="MjB-fi-TJF" secondAttribute="trailing" constant="8" id="xjV-QI-lQX"/>
                             <constraint firstItem="mZD-QC-Ugx" firstAttribute="top" secondItem="9PA-lp-zUW" secondAttribute="bottom" constant="8" id="yxc-te-6Fc"/>
                         </constraints>
                     </view>
@@ -1105,7 +1134,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSRightFacingTriangleTemplate" width="9" height="12"/>
     </resources>

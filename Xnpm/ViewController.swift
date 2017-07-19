@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class ViewController: NSViewController,NSWindowDelegate {
     
     @IBOutlet weak var mainTitle: NSTextField!
     @IBOutlet weak var author: NSTextField!
@@ -46,7 +46,11 @@ class ViewController: NSViewController {
         
     }
     
+    
     override func viewDidAppear() {
+        
+        self.view.window?.delegate = self
+        
         if #available(OSX 10.12.2, *) {
             self.view.window?.unbind(#keyPath(touchBar)) // unbind first
             self.view.window?.bind(#keyPath(touchBar), to: self, withKeyPath: #keyPath(touchBar), options: nil)
@@ -60,7 +64,13 @@ class ViewController: NSViewController {
         }
     }
     
+    func windowDidBecomeKey(_ notification: Notification) {
+       
+        package.processPackage()
+    }
+    
     @IBAction func executeScript(sender:Any){
+        package.processPackage()
         if !taskRunning {
             if let availableConsoleWindow = consoleWindow{
                 availableConsoleWindow.makeKeyAndOrderFront(self)
@@ -102,6 +112,14 @@ class ViewController: NSViewController {
         }
         
         
+    }
+    @IBAction func refresh(_ sender: Any) {
+        
+        package.processPackage()
+        
+    }
+    @IBAction func editInExternalEditor(_ sender: Any) {
+        NSWorkspace.shared().open(package.url)
     }
     
     private func closeProcess(){
