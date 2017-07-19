@@ -70,10 +70,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     }
     
-    func addToDefaults(url:URL){
-        
-    }
-    
     @IBAction func openAction(_ sender: Any) {
         
         print("open called")

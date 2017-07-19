@@ -14,6 +14,7 @@ Written in Swift with Objective-C components.
 
 ## TODO
 * OpenPanel modal on List view controller.
+* Console styling for console window
 * Richer interface utilising more design guidelines
 * Table view events, double click(done), removeAtIndex, delete key.
 * Handle errors on incorrect / poorly formed JSON.

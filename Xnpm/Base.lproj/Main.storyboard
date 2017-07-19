@@ -778,13 +778,14 @@
                                             </tableColumns>
                                             <connections>
                                                 <binding destination="O2v-Ef-3Eg" name="content" keyPath="arrangedObjects" id="rVs-Zy-jPg"/>
+                                                <binding destination="O2v-Ef-3Eg" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="rVs-Zy-jPg" id="vbf-Sn-13A"/>
                                                 <outlet property="delegate" destination="NzG-fO-H2i" id="PZX-3i-vVN"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="h7l-KO-Cwh">
-                                    <rect key="frame" x="-7" y="8" width="0.0" height="15"/>
+                                    <rect key="frame" x="1" y="8" width="0.0" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="BIL-Fh-EmO">
@@ -797,25 +798,38 @@
                                 </tableHeaderView>
                             </scrollView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pWz-wN-05e">
-                                <rect key="frame" x="389" y="13" width="73" height="32"/>
+                                <rect key="frame" x="389" y="21" width="73" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                <buttonCell key="cell" type="push" title="Open" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="r74-Qw-ZMe">
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSGoRightTemplate" imagePosition="only" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="r74-Qw-ZMe">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="open:" target="NzG-fO-H2i" id="KM3-zh-nxt"/>
+                                    <binding destination="O2v-Ef-3Eg" name="enabled" keyPath="canRemove" id="m9L-LH-w6C"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eKF-mL-Lch">
-                                <rect key="frame" x="14" y="13" width="65" height="32"/>
+                                <rect key="frame" x="20" y="21" width="21" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XNz-ir-7MW">
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XNz-ir-7MW">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="addProject:" target="NzG-fO-H2i" id="J1S-DW-2yO"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kbi-Qb-EtR">
+                                <rect key="frame" x="49" y="21" width="21" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" enabled="NO" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lEt-nw-R2a">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="deleteProjectAndUpdate" target="NzG-fO-H2i" id="I1n-RS-75X"/>
+                                    <binding destination="O2v-Ef-3Eg" name="enabled" keyPath="canRemove" id="0DU-KJ-lel"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -824,11 +838,12 @@
                         <outlet property="OpenButton" destination="pWz-wN-05e" id="UKk-lq-xe7"/>
                         <outlet property="addButton" destination="eKF-mL-Lch" id="fyd-tF-CDL"/>
                         <outlet property="arrayController" destination="O2v-Ef-3Eg" id="JPG-Tg-Tum"/>
+                        <outlet property="removeButton" destination="Kbi-Qb-EtR" id="uag-Ga-BJm"/>
                         <outlet property="table" destination="Al9-Va-LAJ" id="WlT-TB-oz7"/>
                     </connections>
                 </viewController>
                 <customObject id="chH-4Z-FfV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <arrayController id="O2v-Ef-3Eg"/>
+                <arrayController avoidsEmptySelection="NO" id="O2v-Ef-3Eg"/>
                 <userDefaultsController id="0vO-LC-rri"/>
             </objects>
             <point key="canvasLocation" x="-513" y="689"/>
@@ -1089,4 +1104,9 @@
             <point key="canvasLocation" x="769" y="1021"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSGoRightTemplate" width="9" height="12"/>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
+    </resources>
 </document>
