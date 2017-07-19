@@ -32,12 +32,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func handleOpen(url:URL){
-        print(NSApplication.shared().windows)
+        
+        //Instantiate package object
         let package = PackageAnalyser(packageUrl: url)
-        let main = NSStoryboard(name : "Main", bundle: nil).instantiateController(withIdentifier: "MainWindow") as! NSWindowController
+        
+        for window in NSApplication.shared().windows {
+            if let vc = window.contentViewController as? ViewController{
+                if (vc.package.packageTitle==package.packageTitle){
+                    print("got at hit \(window)")
+                    window.makeKeyAndOrderFront(nil)
+                    return
+                }
+            }
+        }
+        
+        let main = NSStoryboard(name : "Main", bundle: nil).instantiateController(withIdentifier: "MainWindow") as! WindowController
         let mainVc = NSStoryboard(name:"Main", bundle: nil).instantiateController(withIdentifier: "MainViewController") as! ViewController
         mainVc.package = package
-        main.window?.title = "Xnpm - "+package.packageTitle
+        main.window?.title = "Xnpm Project - "+package.packageTitle
         main.window?.contentViewController = mainVc
         main.window?.makeKeyAndOrderFront(nil)
     }

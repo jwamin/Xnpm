@@ -67,7 +67,7 @@ class ViewController: NSViewController {
             } else {
                 let storyboard = NSStoryboard(name: "Main", bundle: nil)
                 print(storyboard)
-                let windowController = storyboard.instantiateController(withIdentifier: "ConsoleViewWindow") as! NSWindowController
+                let windowController = storyboard.instantiateController(withIdentifier: "ConsoleViewWindow") as! WindowController
                 print(windowController)
                 consoleWindow = windowController.window!// this is the dodgy bit, gets window in list, rather than specific, correct window
                 consoleWindow?.title = package.packageTitle + " Console"
@@ -105,8 +105,11 @@ class ViewController: NSViewController {
     }
     
     private func closeProcess(){
-        consoleWindow?.close()
-        consoleWindow = nil
+        if let consoleWindowOpen = consoleWindow{
+            consoleWindowOpen.close()
+            consoleWindow = nil
+        }
+
         
         execButton.title = "Execute"
         taskC?.endTask()

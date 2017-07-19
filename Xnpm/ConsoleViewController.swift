@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ConsoleViewController: NSViewController {
+class ConsoleViewController: NSViewController,NSWindowDelegate {
 
     @IBOutlet var textView: NSTextView!
     var parentController:ViewController?
@@ -17,12 +17,18 @@ class ConsoleViewController: NSViewController {
     override func viewDidLoad() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleText), name: NSNotification.Name(rawValue: "gotOut"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleEnd), name: NSNotification.Name(rawValue: "gotEnd"), object: nil)
+        
+        
+    }
+    
+    override func viewDidAppear() {
+        self.view.window?.delegate = self;
     }
     
     override func awakeFromNib() {
         
         print("hello world")
-        
+        textView.font = NSFont(name: "Andale Mono", size: 11.0)
     }
     
     func handleText(notification:NSNotification){
@@ -55,10 +61,18 @@ class ConsoleViewController: NSViewController {
         // Append string to textview
         textView.textStorage?.append(NSAttributedString(string: str))
         
+        //Set Font
+        textView.textStorage?.font = NSFont(name: "Andale Mono", size: 11.0)
+
         if (scroll){
             textView.scrollRangeToVisible(NSMakeRange((textView.string?.characters.count)!, 0));
         }// Scroll to end of the textview contents
         
+    }
+    
+    func windowShouldClose(_ sender: Any) -> Bool {
+        self.parentController?.executeScript(sender: self)
+        return false;
     }
     
     func removeObservers(){
