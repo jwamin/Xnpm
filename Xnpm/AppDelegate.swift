@@ -101,7 +101,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
                 
             } else {
-                alert("There was an error")
+                return
             }
             
         }

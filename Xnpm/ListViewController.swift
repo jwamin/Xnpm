@@ -94,7 +94,7 @@ class ListViewController: NSViewController,NSTableViewDelegate, ListProtocol {
     }
     
     @IBAction func addProject(_ sender: Any) {
-        appDelegate.openAction(self.view.window)
+        appDelegate.openAction(self.view.window as Any)
     }
     @IBAction func open(_ sender: Any) {
         
