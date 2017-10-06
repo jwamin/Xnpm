@@ -39,14 +39,14 @@ class ViewController: NSViewController {
     
     @IBAction func changed(_ sender: Any) {
         if #available(OSX 10.12.2, *) {
-        updateScriptButton()
+            updateScriptButton()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        
         
         // Do any additional setup after loading the view.
         self.view.window?.title = "Xnpm "+package.packageTitle
@@ -69,11 +69,11 @@ class ViewController: NSViewController {
             // Update the view, if already loaded.
         }
     }
-
+    
     
     @IBAction func executeScript(sender:Any){
         
-   
+        
         if !taskRunning {
             if let availableConsoleWindow = consoleWindow{
                 availableConsoleWindow.makeKeyAndOrderFront(self)
@@ -117,7 +117,7 @@ class ViewController: NSViewController {
             }
             
         }
-
+        
         
     }
     @IBAction func refresh(_ sender: Any) {
@@ -134,7 +134,7 @@ class ViewController: NSViewController {
             consoleWindowOpen.close()
             consoleWindow = nil
         }
-
+        
         
         execButton.title = "Execute"
         taskC?.endTask()
@@ -155,7 +155,7 @@ class ViewController: NSViewController {
     
     deinit {
         if #available(OSX 10.12.2, *) {
-           self.view.window?.unbind(#keyPath(touchBar))
+            self.view.window?.unbind(#keyPath(touchBar))
         }
     }
     
@@ -167,7 +167,7 @@ class ViewController: NSViewController {
 
 @available(OSX 10.12.2, *)
 extension ViewController: NSTouchBarDelegate {
-
+    
     
     @available(OSX 10.12.2, *)
     override func makeTouchBar() -> NSTouchBar? {
@@ -208,29 +208,29 @@ extension ViewController: NSTouchBarDelegate {
             buttonItem.view = button
             return buttonItem
         case NSTouchBarItemIdentifier.scriptButton:
-            let buttonItem = NSCustomTouchBarItem(identifier: identifier)
-            let button = NSButton(title: "Script: \(scriptDropdown.selectedItem!.title)", target: self, action: nil)
-            buttonItem.view = button
+            let buttonItem = NSPopoverTouchBarItem(identifier: .scriptButton)
+            //buttonItem.showsCloseButton = true
+            buttonItem.collapsedRepresentationLabel = "Script: \(scriptDropdown.selectedItem!.title)"
+            buttonItem.popoverTouchBar = ScriptsPopover(self.scriptDropdown)
             return buttonItem
         default:
             return nil
         }
         
     }
-
+    
     func updateScriptButton(){
         guard let touchBar = touchBar else { return }
         print("got touchbar")
         for itemIdentifier in touchBar.itemIdentifiers {
-            guard let item = touchBar.item(forIdentifier: itemIdentifier) as? NSCustomTouchBarItem,
-                let button = item.view as? NSButton else {continue}
+            guard let item = touchBar.item(forIdentifier: itemIdentifier) as? NSPopoverTouchBarItem else {continue}
             
             if(itemIdentifier == NSTouchBarItemIdentifier.scriptButton){
                 print("got here")
-               button.title = "Script: \(scriptDropdown.selectedItem!.title)"
+                item.collapsedRepresentationLabel = "Script: \(scriptDropdown.selectedItem!.title)"
             }
-        
-    }
+            
+        }
     }
     
     
@@ -252,7 +252,7 @@ extension ViewController: NSTouchBarDelegate {
                 
                 button.image = image
             }
-
+            
         }
     }
     
