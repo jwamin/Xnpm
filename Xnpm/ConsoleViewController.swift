@@ -19,10 +19,10 @@ class ConsoleViewController: NSViewController,NSWindowDelegate {
     override func viewDidLoad() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleText), name: NSNotification.Name(rawValue: "gotOut"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleEnd), name: NSNotification.Name(rawValue: "gotEnd"), object: nil)
-        if #available(OSX 10.12.2, *) {
-        touchBarButton.image = NSImage(named: NSImageNameTouchBarRecordStopTemplate)
-            indicator.startAnimation(self)
-        }
+//        if #available(OSX 10.12.2, *) {
+//        touchBarButton.image = NSImage(named: NSImageNameTouchBarRecordStopTemplate)
+//            indicator.startAnimation(self)
+//        }
     }
     
     override func viewDidAppear() {

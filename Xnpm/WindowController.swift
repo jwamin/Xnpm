@@ -8,19 +8,7 @@
 
 import Cocoa
 
-// MARK: -
 
-fileprivate extension NSTouchBarCustomizationIdentifier {
-    static let XnpmTouchBar = NSTouchBarCustomizationIdentifier("XnpmTouchBar")
-}
-
-fileprivate extension NSTouchBarItemIdentifier {
-    static let label = NSTouchBarItemIdentifier("XnpmTouchBarlabel")
-}
-
-fileprivate extension NSTouchBarItemIdentifier {
-    static let icon = NSTouchBarItemIdentifier("XnpmTouchBaricon")
-}
 
 
 class WindowController: NSWindowController {
@@ -68,9 +56,13 @@ extension WindowController: NSTouchBarDelegate {
             return custom
         case NSTouchBarItemIdentifier.icon:
             let custom = NSCustomTouchBarItem(identifier: identifier)
-            let imgview = NSImageView(image: NSApp.applicationIconImage)
-            
+            let img = NSApp.applicationIconImage!
+            img.size = CGSize(width: 30.0, height: 30.0)
+            let imgview = NSImageView(image: img)
+            imgview.frame.size = CGSize(width: imgview.frame.width, height: 30.0)
+            imgview.imageScaling = .scaleProportionallyUpOrDown
             custom.view = imgview
+            print("something")
             return custom
         default:
             return nil

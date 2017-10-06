@@ -63,6 +63,8 @@ class ViewController: NSViewController {
 
     
     @IBAction func executeScript(sender:Any){
+        
+   
         if !taskRunning {
             if let availableConsoleWindow = consoleWindow{
                 availableConsoleWindow.makeKeyAndOrderFront(self)
@@ -84,6 +86,10 @@ class ViewController: NSViewController {
             taskC = TaskController(url: package.url!, withIdentifier: package.packageTitle)
             let selectedCommand = scriptDropdown.selectedItem!.title
             taskRunning = true;
+            if #available(OSX 10.12.2, *) {
+                customizeActionButton(taskRunning)
+            }
+            
             scriptDropdown.isEnabled = false;
             taskC?.beginTask(selectedCommand)
             execButton.title = "Halt"
@@ -102,7 +108,7 @@ class ViewController: NSViewController {
             }
             
         }
-        
+
         
     }
     @IBAction func refresh(_ sender: Any) {
@@ -125,6 +131,10 @@ class ViewController: NSViewController {
         taskC?.endTask()
         taskC = nil
         taskRunning = false
+        if #available(OSX 10.12.2, *) {
+            customizeActionButton(taskRunning)
+        }
+        
         scriptDropdown.isEnabled = true;
         
         
@@ -136,7 +146,7 @@ class ViewController: NSViewController {
     
     deinit {
         if #available(OSX 10.12.2, *) {
-            self.view.window?.unbind(#keyPath(touchBar))
+           self.view.window?.unbind(#keyPath(touchBar))
         }
     }
     
@@ -144,4 +154,73 @@ class ViewController: NSViewController {
     
 }
 
+// MARK: - NSTouchBarDelegate
+
+@available(OSX 10.12.2, *)
+extension ViewController: NSTouchBarDelegate {
+
+    
+    @available(OSX 10.12.2, *)
+    override func makeTouchBar() -> NSTouchBar? {
+        let identifiers:[NSTouchBarItemIdentifier] = [.icon,.label,.button]
+        let touchBar = NSTouchBar()
+        touchBar.delegate = self
+        touchBar.customizationIdentifier = .XnpmTouchBar
+        touchBar.defaultItemIdentifiers = identifiers //[.icon,.label, .fixedSpaceLarge, .otherItemsProxy]
+        return touchBar
+    }
+    
+    func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItemIdentifier) -> NSTouchBarItem? {
+        
+        switch identifier {
+        case NSTouchBarItemIdentifier.label:
+            let custom = NSCustomTouchBarItem(identifier: identifier)
+            let label = NSTextField.init(labelWithString: "Xnpm "+package.packageTitle)
+            custom.view = label
+            
+            return custom
+        case NSTouchBarItemIdentifier.icon:
+            let custom = NSCustomTouchBarItem(identifier: identifier)
+            let img = NSApp.applicationIconImage!
+            img.size = CGSize(width: 30.0, height: 30.0)
+            let imgview = NSImageView(image: img)
+            imgview.frame.size = CGSize(width: imgview.frame.width, height: 30.0)
+            imgview.imageScaling = .scaleProportionallyUpOrDown
+            custom.view = imgview
+            print("something")
+            return custom
+        case NSTouchBarItemIdentifier.button:
+            let buttonItem = NSCustomTouchBarItem(identifier: identifier)
+            var image = NSImage(named: NSImageNameTouchBarPlayTemplate)!
+            if(taskRunning){
+                image = NSImage(named: NSImageNameTouchBarRecordStopTemplate)!
+            }
+            let button = NSButton(image: image, target: self, action: #selector(executeScript(sender:)))
+            buttonItem.view = button
+            return buttonItem
+        default:
+            return nil
+        }
+        
+    }
+
+    func customizeActionButton(_ isrunning:Bool){
+        
+        guard let touchBar = touchBar else { return }
+        print("got touchbar")
+        for itemIdentifier in touchBar.itemIdentifiers {
+            guard let item = touchBar.item(forIdentifier: itemIdentifier) as? NSCustomTouchBarItem,
+                let button = item.view as? NSButton else {continue}
+            print("got here")
+            var image = NSImage(named: NSImageNameTouchBarPlayTemplate)!
+            if(isrunning){
+                image = NSImage(named: NSImageNameTouchBarRecordStopTemplate)!
+            }
+            
+            button.image = image
+        }
+    }
+    
+    
+}
 
