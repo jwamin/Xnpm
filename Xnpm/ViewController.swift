@@ -34,6 +34,15 @@ class ViewController: NSViewController {
         }
     }
     
+    
+    
+    
+    @IBAction func changed(_ sender: Any) {
+        if #available(OSX 10.12.2, *) {
+        updateScriptButton()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -162,7 +171,7 @@ extension ViewController: NSTouchBarDelegate {
     
     @available(OSX 10.12.2, *)
     override func makeTouchBar() -> NSTouchBar? {
-        let identifiers:[NSTouchBarItemIdentifier] = [.icon,.label,.button]
+        let identifiers:[NSTouchBarItemIdentifier] = [.icon,.label,.button,.scriptButton]
         let touchBar = NSTouchBar()
         touchBar.delegate = self
         touchBar.customizationIdentifier = .XnpmTouchBar
@@ -198,12 +207,33 @@ extension ViewController: NSTouchBarDelegate {
             let button = NSButton(image: image, target: self, action: #selector(executeScript(sender:)))
             buttonItem.view = button
             return buttonItem
+        case NSTouchBarItemIdentifier.scriptButton:
+            let buttonItem = NSCustomTouchBarItem(identifier: identifier)
+            let button = NSButton(title: "Script: \(scriptDropdown.selectedItem!.title)", target: self, action: nil)
+            buttonItem.view = button
+            return buttonItem
         default:
             return nil
         }
         
     }
 
+    func updateScriptButton(){
+        guard let touchBar = touchBar else { return }
+        print("got touchbar")
+        for itemIdentifier in touchBar.itemIdentifiers {
+            guard let item = touchBar.item(forIdentifier: itemIdentifier) as? NSCustomTouchBarItem,
+                let button = item.view as? NSButton else {continue}
+            
+            if(itemIdentifier == NSTouchBarItemIdentifier.scriptButton){
+                print("got here")
+               button.title = "Script: \(scriptDropdown.selectedItem!.title)"
+            }
+        
+    }
+    }
+    
+    
     func customizeActionButton(_ isrunning:Bool){
         
         guard let touchBar = touchBar else { return }
@@ -211,13 +241,18 @@ extension ViewController: NSTouchBarDelegate {
         for itemIdentifier in touchBar.itemIdentifiers {
             guard let item = touchBar.item(forIdentifier: itemIdentifier) as? NSCustomTouchBarItem,
                 let button = item.view as? NSButton else {continue}
-            print("got here")
-            var image = NSImage(named: NSImageNameTouchBarPlayTemplate)!
-            if(isrunning){
-                image = NSImage(named: NSImageNameTouchBarRecordStopTemplate)!
-            }
             
-            button.image = image
+            if(itemIdentifier == NSTouchBarItemIdentifier.button){
+                print("got here")
+                
+                var image = NSImage(named: NSImageNameTouchBarPlayTemplate)!
+                if(isrunning){
+                    image = NSImage(named: NSImageNameTouchBarRecordStopTemplate)!
+                }
+                
+                button.image = image
+            }
+
         }
     }
     

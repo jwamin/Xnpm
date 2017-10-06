@@ -35,12 +35,12 @@ class ConsoleViewController: NSViewController,NSWindowDelegate {
     
     override func awakeFromNib() {
         
-        print("hello world")
+        //print("hello world")
         textView.font = NSFont(name: "Andale Mono", size: 11.0)
     }
     
     func handleText(notification:NSNotification){
-        print(notification.object ?? "none")
+        //print(notification.object ?? "none")
         
         let dict = notification.object as! NSDictionary
         let str = dict.object(forKey: "str") as! String
@@ -57,7 +57,7 @@ class ConsoleViewController: NSViewController,NSWindowDelegate {
         
     }
     func handleEnd(notification:NSNotification){
-        print(notification.object ?? "none")
+        //print(notification.object ?? "none")
         updateTextView(str: notification.object as! String)
     }
     
@@ -139,7 +139,7 @@ extension ConsoleViewController: NSTouchBarDelegate {
             imgview.frame.size = CGSize(width: imgview.frame.width, height: 30.0)
             imgview.imageScaling = .scaleProportionallyUpOrDown
             custom.view = imgview
-            print("something")
+            //print("something")
             return custom
         case NSTouchBarItemIdentifier.button:
             let buttonItem = NSCustomTouchBarItem(identifier: identifier)

@@ -909,6 +909,7 @@
                                     </menu>
                                 </popUpButtonCell>
                                 <connections>
+                                    <action selector="changed:" target="XfG-lQ-9wD" id="Bqe-ZE-sm1"/>
                                     <binding destination="XfG-lQ-9wD" name="contentValues" keyPath="self.package.scripts" previousBinding="e53-kH-JP1" id="4t2-AI-T8E"/>
                                     <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.package.scripts" id="IJ7-o4-Cl5">
                                         <dictionary key="options">
