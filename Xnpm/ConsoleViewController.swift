@@ -10,15 +10,19 @@ import Cocoa
 
 class ConsoleViewController: NSViewController,NSWindowDelegate {
 
+    @IBOutlet weak var touchBarButton: NSButton!
     @IBOutlet var textView: NSTextView!
     var parentController:ViewController?
     
+    @IBOutlet weak var indicator: NSProgressIndicator!
     
     override func viewDidLoad() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleText), name: NSNotification.Name(rawValue: "gotOut"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleEnd), name: NSNotification.Name(rawValue: "gotEnd"), object: nil)
-        
-        
+        if #available(OSX 10.12.2, *) {
+        touchBarButton.image = NSImage(named: NSImageNameTouchBarRecordStopTemplate)
+            indicator.startAnimation(self)
+        }
     }
     
     override func viewDidAppear() {
@@ -93,3 +97,5 @@ class ConsoleViewController: NSViewController,NSWindowDelegate {
     }
     
 }
+
+

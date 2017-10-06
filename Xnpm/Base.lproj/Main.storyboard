@@ -2,10 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="qbK-9f-TDD">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="13038"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -790,7 +788,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="h7l-KO-Cwh">
-                                    <rect key="frame" x="1" y="7" width="0.0" height="16"/>
+                                    <rect key="frame" x="1" y="8" width="0.0" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="BIL-Fh-EmO">
@@ -1061,26 +1059,6 @@
                             <constraint firstItem="mZD-QC-Ugx" firstAttribute="top" secondItem="9PA-lp-zUW" secondAttribute="bottom" constant="8" id="yxc-te-6Fc"/>
                         </constraints>
                     </view>
-                    <touchBar key="touchBar" id="Qf5-gq-Vbu">
-                        <touchBarItems>
-                            <touchBarItem id="d7U-sR-cvd">
-                                <viewController key="viewController" id="bc9-jW-24G">
-                                    <button key="view" identifier="playButton" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iDV-TY-H6l">
-                                        <rect key="frame" x="0.0" y="0.0" width="144" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" bezelStyle="rounded" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UX5-SK-JAs">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" usesAppearanceFont="YES"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="runTaskTouchBar:" target="XfG-lQ-9wD" id="UBs-1G-gN4"/>
-                                        </connections>
-                                    </button>
-                                </viewController>
-                                <size key="designTimeSize" width="144" height="30"/>
-                            </touchBarItem>
-                        </touchBarItems>
-                    </touchBar>
                     <connections>
                         <outlet property="activity" destination="uqX-bh-diE" id="4VM-RV-Z0t"/>
                         <outlet property="author" destination="989-1w-mKH" id="rdE-D9-rAL"/>
@@ -1090,7 +1068,6 @@
                         <outlet property="mainTitle" destination="eoe-g7-CSp" id="GMx-Cv-eGy"/>
                         <outlet property="repoLink" destination="ShX-gQ-Ccw" id="7OP-AF-86I"/>
                         <outlet property="scriptDropdown" destination="mZD-QC-Ugx" id="eG8-gy-76f"/>
-                        <outlet property="touchBarButton" destination="iDV-TY-H6l" id="q70-f0-Cbr"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

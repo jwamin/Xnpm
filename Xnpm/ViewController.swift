@@ -27,6 +27,7 @@ class ViewController: NSViewController {
     var taskRunning:Bool = false;
     
     
+    
     var package:PackageAnalyser!{
         didSet{
             print("Xnpm "+package.packageTitle)
@@ -36,10 +37,7 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-                if #available(OSX 10.12.2, *) {
-                    bind(#keyPath(touchBar), to: self, withKeyPath: #keyPath(touchBar), options: nil)
-                    createTouchBar()
-                }
+
         
         // Do any additional setup after loading the view.
         self.view.window?.title = "Xnpm "+package.packageTitle
@@ -142,30 +140,8 @@ class ViewController: NSViewController {
         }
     }
     
-    @IBOutlet var touchBarButton:NSButton!
+    
     
 }
 
-@available(OSX 10.12.2, *)
-extension ViewController: NSTouchBarDelegate{
-
-    @IBAction func runTaskTouchBar(_ sender:Any){
-        if(self.taskRunning){
-            touchBarButton.image = NSImage(named: NSImageNameTouchBarPlayTemplate)
-        } else {
-            touchBarButton.image = NSImage(named: NSImageNameTouchBarPauseTemplate)
-        }
-        self.executeScript(sender: sender)
-    }
-    
-    func createTouchBar(){
-        
-        touchBarButton.image = NSImage(named: NSImageNameTouchBarPlayTemplate)
-        
-        
-        
-    }
- 
-    
-}
 
