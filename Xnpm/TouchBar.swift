@@ -28,7 +28,7 @@ extension NSTouchBarItemIdentifier {
 class ScriptsPopover : NSTouchBar, NSScrubberDelegate,NSScrubberDataSource{
     
     var presentingItem: NSPopoverTouchBarItem?
-    
+    var parentViewController:ViewController?
     var control:NSPopUpButton
     
     func dismiss(_ sender: Any?) {
@@ -47,12 +47,17 @@ class ScriptsPopover : NSTouchBar, NSScrubberDelegate,NSScrubberDataSource{
         return itemView
     }
     
-    init(_ scriptsObject:NSPopUpButton) {
+    func scrubber(_ scrubber: NSScrubber, didSelectItemAt selectedIndex: Int) {
+        control.selectItem(at: selectedIndex)
+        parentViewController?.changed(self)
+    }
+    
+    init(_ scriptsObject:NSPopUpButton,_ parentVC:ViewController) {
         control = scriptsObject
         super.init()
         delegate = self
-        
-        var items:[NSTouchBarItemIdentifier] = [.Scrubber]
+        parentViewController = parentVC
+        let items:[NSTouchBarItemIdentifier] = [.Scrubber]
         
 //        for item in scriptsObject.itemTitles{
 //            items.append(.button)

@@ -73,7 +73,7 @@ class ConsoleViewController: NSViewController,NSWindowDelegate {
         textView.textStorage?.font = NSFont(name: "Andale Mono", size: 11.0)
 
         if (scroll){
-            textView.scrollRangeToVisible(NSMakeRange((textView.string?.characters.count)!, 0));
+            textView.scrollRangeToVisible(NSMakeRange((textView.string?.count)!, 0));
         }// Scroll to end of the textview contents
         
     }
