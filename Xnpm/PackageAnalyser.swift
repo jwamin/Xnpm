@@ -12,7 +12,8 @@ class PackageAnalyser: NSObject {
     
     var url:URL!
     var dictionary:[String:Any]!
-    
+    var valid:Bool = true
+    var error:NSError?
     dynamic var packageTitle:String!
     dynamic var author:String!
     dynamic var version:String!
@@ -45,9 +46,9 @@ class PackageAnalyser: NSObject {
                 processDict()
                 
             } catch let error as NSError {
-                
-                print(error)
-                
+                print("bad form error")
+                self.error = error
+                self.valid = false
             }
             
         } catch {
