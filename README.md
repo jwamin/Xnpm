@@ -10,14 +10,13 @@ Written in Swift with Objective-C components.
 * Auto close console window on exit.
 * Adds opened projects to list view for opening.
 * Stores projects in NSUserDefaults
-* Error handling when wrong file is selected.
+* Error handling when wrong file is selected + incorrect / poorly formed JSON.
 * OpenPanel sheet modal on List view controller.
 * Table view events and bindings, double click, removeAtIndex, delete key.
 * TouchBar - selection, play-stop of scripts
 
 ## TODO
 * Richer interface utilising more design guidelines.
-* Handle errors on incorrect / poorly formed JSON.
 * remove / rearrage Project list, clear.
 * Clean up NSMenus
 * Icons / Images
