@@ -68,6 +68,10 @@ class ListViewController: NSViewController,NSTableViewDelegate, ListProtocol{
         print("got update notification")
         loadDefaults()
     }
+
+    func tableView(_ tableView: NSTableView, didDrag tableColumn: NSTableColumn) {
+        print(tableColumn)
+    }
     
     //    func numberOfRows(in tableView: NSTableView) -> Int {
     //        return projects?.count ?? 0

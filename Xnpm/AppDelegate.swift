@@ -13,12 +13,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var projects:Array<String>?
     var listView:ListProtocol?
-    
+    @IBOutlet var new:NSMenuItem!
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         
         
+       // print(NSDocumentController.shared())
         
+        //NSDocumentController.shared().newDocument(self)
         
         if #available(OSX 10.12.2, *) {
             NSApplication.shared().isAutomaticCustomizeTouchBarMenuItemEnabled = true
@@ -31,6 +33,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
     
+    @IBAction func showProjectView(_ sender: Any) {
+        
+       
+        
+       let controller =  NSStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialController() as! WindowController
+        
+         controller.showWindow(sender)
+        
+    }
     func handleOpen(url:URL){
         
         //Instantiate package object
@@ -72,7 +83,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func application(_ sender: NSApplication, openFile filename: String) -> Bool {
         let url = URL(fileURLWithPath: filename)
-        handleOpen(url: url)
+        print("hello world",url)
+        //handleOpen(url: url)
         return true
     }
     

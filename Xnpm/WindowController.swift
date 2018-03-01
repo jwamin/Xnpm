@@ -20,10 +20,9 @@ class WindowController: NSWindowController {
     
     override func windowDidLoad() {
         super.windowDidLoad()
-        print("looks like this window controller was initialised")
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
         
-        
+    
         
     }
 
@@ -68,4 +67,8 @@ extension WindowController: NSTouchBarDelegate {
             return nil
         }
     }
+}
+
+class Window: NSWindow {
+    
 }
