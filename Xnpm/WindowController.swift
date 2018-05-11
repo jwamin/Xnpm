@@ -11,7 +11,7 @@ import Cocoa
 
 
 
-class WindowController: NSWindowController {
+class WindowController: NSWindowController,NSWindowDelegate {
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -21,8 +21,9 @@ class WindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-        
-    
+        self.window?.delegate = self
+        let delegate = NSApp.delegate as! AppDelegate
+        delegate.projectViewWindow = self
         
     }
 
@@ -35,6 +36,11 @@ class WindowController: NSWindowController {
         touchBar.defaultItemIdentifiers = [.icon,.label, .fixedSpaceLarge, .otherItemsProxy]
         
         return touchBar
+    }
+    
+    func windowWillClose(_ notification: Notification) {
+        let delegate = NSApp.delegate as! AppDelegate
+        delegate.projectViewWindow = nil
     }
     
 }

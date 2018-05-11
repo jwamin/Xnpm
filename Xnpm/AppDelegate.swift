@@ -14,9 +14,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var projects:Array<String>?
     var listView:ListProtocol?
     @IBOutlet var new:NSMenuItem!
+    
+    var projectViewWindow:NSWindowController?
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         
+    
         
        // print(NSDocumentController.shared())
         
@@ -35,11 +39,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func showProjectView(_ sender: Any) {
         
-       
+        if(projectViewWindow != nil){
+            print("window avalable")
+            projectViewWindow?.window?.makeKeyAndOrderFront(self)
+        } else {
+            let controller =  NSStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialController() as! WindowController
+            projectViewWindow = controller
+            controller.showWindow(sender)
+        }
         
-       let controller =  NSStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialController() as! WindowController
-        
-         controller.showWindow(sender)
+   
         
     }
     func handleOpen(url:URL){
