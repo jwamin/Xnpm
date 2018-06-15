@@ -38,12 +38,12 @@
         NSData *data = [outhandle availableData];
         if(data.length>0){
             NSString *str = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-            NSDictionary *dict = @{@"str":str,@"sender":_identifier};
+            NSDictionary *dict = @{@"str":str,@"sender":self->_identifier};
             [[NSNotificationCenter defaultCenter]postNotificationName:@"gotOut" object:dict];
             [outhandle waitForDataInBackgroundAndNotify];
         } else {
             NSLog(@"EOF in stdout from process, removing obs1 observer");
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"gotEnd" object:_identifier];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"gotEnd" object:self->_identifier];
             [[NSNotificationCenter defaultCenter]removeObserver:obs1];
         }
         

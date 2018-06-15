@@ -7,6 +7,8 @@
 //
 
 import Cocoa
+import SwiftGit2
+
 
 class ViewController: NSViewController {
     
@@ -20,13 +22,14 @@ class ViewController: NSViewController {
     @IBOutlet weak var button2: NSButton!
     @IBOutlet weak var runButton: NSButton!
     @IBOutlet weak var activity: NSProgressIndicator!
+    @IBOutlet weak var branch: NSTextField!
     
     var consoleWindow:NSWindow?
     var consoleViewController:ConsoleViewController?
     var taskC:TaskController?
     var taskRunning:Bool = false;
     
-    
+    var gitThingy:Repository!
     
     var package:PackageAnalyser!{
         didSet{
@@ -47,9 +50,13 @@ class ViewController: NSViewController {
         super.viewDidLoad()
         
         
-        
         // Do any additional setup after loading the view.
         self.view.window?.title = "Xnpm "+package.packageTitle
+        
+        
+ 
+        
+
         
         
     }
@@ -61,6 +68,26 @@ class ViewController: NSViewController {
             self.view.window?.unbind(#keyPath(touchBar)) // unbind first
             self.view.window?.bind(#keyPath(touchBar), to: self, withKeyPath: #keyPath(touchBar), options: nil)
         }
+        
+        guard let url = package.url else {
+            return
+        }
+        
+        let str = NSString(string: url.absoluteString)
+        let path = str.deletingLastPathComponent
+        let finalURL = URL(string: path)!
+        print(finalURL)
+        let repo = Repository.at(finalURL)
+        if let repo = repo.value{
+            let currentBranch = repo.HEAD()
+            if let branch = currentBranch.value {
+                print(branch.shortName)
+                self.branch.stringValue = branch.shortName!
+            }
+            
+        }
+        
+        
     }
     
     
