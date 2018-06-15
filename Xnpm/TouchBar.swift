@@ -25,8 +25,8 @@ extension NSTouchBarItemIdentifier {
 }
 
 @available(OSX 10.12.2, *)
-class ScriptsPopover : NSTouchBar, NSScrubberDelegate,NSScrubberDataSource{
-    
+class ScriptsPopover : NSTouchBar, NSScrubberDelegate,NSScrubberDataSource,NSScrubberFlowLayoutDelegate{
+    //refactor this to use scrollable buttons instead of scrubber
     var presentingItem: NSPopoverTouchBarItem?
     var parentViewController:ViewController?
     var control:NSPopUpButton
@@ -40,10 +40,28 @@ class ScriptsPopover : NSTouchBar, NSScrubberDelegate,NSScrubberDataSource{
         return control.numberOfItems
     }
     
+    // Scrubber is asking for the size for a particular item.
+    func scrubber(_ scrubber: NSScrubber, layout: NSScrubberFlowLayout, sizeForItemAt itemIndex: Int) -> NSSize {
+        let size = NSSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
+        
+        // Specify a system font size of 0 to automatically use the appropriate size.
+        let title = control.itemTitles[itemIndex]
+        let textRect = title.boundingRect(with: size, options: [.usesFontLeading, .usesLineFragmentOrigin],
+                                          attributes: nil)
+        //+6:  spacing.
+        //+10: NSTextField horizontal padding, no good way to retrieve this though.
+        var width: CGFloat = 100.0
+        if let image = NSImage(named: "bookmarksTemplate") {
+            width = textRect.size.width + image.size.width + 6 + 10
+        }
+        
+        return NSSize(width: width, height: 30)
+    }
+    
     func scrubber(_ scrubber: NSScrubber, viewForItemAt index: Int) -> NSScrubberItemView {
         print(scrubber)
         let itemView = scrubber.makeItem(withIdentifier: "ScrubberItem", owner: self) as! NSScrubberTextItemView
-        itemView.title = control.itemTitles[index]
+        itemView.title = control.itemTitles[index]    
         return itemView
     }
     
@@ -84,7 +102,7 @@ class ScriptsPopover : NSTouchBar, NSScrubberDelegate,NSScrubberDataSource{
 @available(OSX 10.12.2, *)
 extension ScriptsPopover: NSTouchBarDelegate {
     func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItemIdentifier) -> NSTouchBarItem? {
-        
+        //refactor this to use scrollable buttons instead of scrubber
         switch identifier {
         case NSTouchBarItemIdentifier.Scrubber:
             let scrubberItem = NSCustomTouchBarItem(identifier: identifier)
