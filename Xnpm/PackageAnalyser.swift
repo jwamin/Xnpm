@@ -21,7 +21,7 @@ class PackageAnalyser: NSObject {
     dynamic var packageDescription:String!
     dynamic var repoLink:URL!
     dynamic var scripts:NSArray!
-    
+    dynamic var gitBranch:String!
     
     init(packageUrl:URL?) {
         super.init()
@@ -92,6 +92,9 @@ class PackageAnalyser: NSObject {
         return dictionary
     }
     
+    func setBranch(branchString:String){
+        self.gitBranch = branchString
+    }
 
     
 }

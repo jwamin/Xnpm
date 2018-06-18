@@ -349,7 +349,7 @@
                                         </tableView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="h7l-KO-Cwh">
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.69230769230769229" horizontal="YES" id="h7l-KO-Cwh">
                                     <rect key="frame" x="1" y="179" width="438" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -518,7 +518,7 @@
                                         </customSpacing>
                                     </stackView>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="989-1w-mKH">
-                                        <rect key="frame" x="-2" y="220" width="45" height="17"/>
+                                        <rect key="frame" x="-2" y="215" width="45" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Author" id="jyC-7T-gmV">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -529,7 +529,7 @@
                                         </connections>
                                     </textField>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tjI-8G-Bwm">
-                                        <rect key="frame" x="-2" y="190" width="92" height="17"/>
+                                        <rect key="frame" x="-2" y="181" width="92" height="17"/>
                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Multiline Label" id="BRy-ZP-LUx">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -540,7 +540,7 @@
                                         </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fek-X6-G3o">
-                                        <rect key="frame" x="-2" y="159" width="51" height="17"/>
+                                        <rect key="frame" x="-2" y="146" width="51" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="License" id="Rf3-gr-ecy">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -550,27 +550,43 @@
                                             <binding destination="XfG-lQ-9wD" name="value" keyPath="self.package.author" id="v3P-il-ias"/>
                                         </connections>
                                     </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ShX-gQ-Ccw">
-                                        <rect key="frame" x="-2" y="129" width="69" height="17"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Repository" id="EyR-4x-2Z0">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <connections>
-                                            <binding destination="XfG-lQ-9wD" name="value" keyPath="self.package.repoLink" id="V1G-36-jjT"/>
-                                        </connections>
-                                    </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ts6-WA-Gms">
-                                        <rect key="frame" x="-2" y="99" width="47" height="17"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Branch" id="igS-TD-40X">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vfw-vI-vCS">
+                                        <rect key="frame" x="0.0" y="112" width="116" height="17"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ShX-gQ-Ccw">
+                                                <rect key="frame" x="-2" y="0.0" width="69" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Repository" id="EyR-4x-2Z0">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.package.repoLink" id="V1G-36-jjT"/>
+                                                </connections>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ts6-WA-Gms">
+                                                <rect key="frame" x="71" y="0.0" width="47" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Branch" id="igS-TD-40X">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.package.gitBranch" id="dbn-9t-2Ks"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9PA-lp-zUW">
-                                        <rect key="frame" x="-2" y="69" width="444" height="17"/>
+                                        <rect key="frame" x="-2" y="77" width="444" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Scripts" id="IBs-5G-DHi">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -578,7 +594,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <stackView distribution="fillProportionally" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NiA-b1-jxX">
-                                        <rect key="frame" x="0.0" y="34" width="440" height="21"/>
+                                        <rect key="frame" x="0.0" y="39" width="440" height="21"/>
                                         <subviews>
                                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mZD-QC-Ugx">
                                                 <rect key="frame" x="-2" y="-3" width="429" height="26"/>
@@ -603,7 +619,7 @@
                                                 </connections>
                                             </popUpButton>
                                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="uqX-bh-diE">
-                                                <rect key="frame" x="424" y="3" width="16" height="16"/>
+                                                <rect key="frame" x="424" y="2" width="16" height="16"/>
                                             </progressIndicator>
                                         </subviews>
                                         <visibilityPriorities>
@@ -645,10 +661,8 @@
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
-                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>

@@ -69,24 +69,8 @@ class ViewController: NSViewController {
             self.view.window?.bind(#keyPath(touchBar), to: self, withKeyPath: #keyPath(touchBar), options: nil)
         }
         
-        guard let url = package.url else {
-            return
-        }
-        
-        let str = NSString(string: url.absoluteString)
-        let path = str.deletingLastPathComponent
-        let finalURL = URL(string: path)!
-        print(finalURL)
-        let repo = Repository.at(finalURL)
-        if let repo = repo.value{
-            let currentBranch = repo.HEAD()
-            if let branch = currentBranch.value {
-                print(branch.shortName)
-                self.branch.stringValue = branch.shortName!
-            }
-            
-        }
-        
+
+    getBranch()
         
     }
     
@@ -186,6 +170,30 @@ class ViewController: NSViewController {
         }
     }
     
+    
+    //Git Branch functionality
+    
+    func getBranch()->Void{
+        guard let url = package.url else {
+            return
+        }
+        
+        let str = NSString(string: url.absoluteString)
+        let path = str.deletingLastPathComponent
+        let finalURL = URL(string: path)!
+        print(finalURL)
+        let repo = Repository.at(finalURL)
+        if let repo = repo.value{
+            let currentBranch = repo.HEAD()
+            if let branch = currentBranch.value {
+                if let branchname = branch.shortName{
+                    self.package.setBranch(branchString: branchname)
+                }
+                
+            }
+            
+        }
+    }
     
     
 }

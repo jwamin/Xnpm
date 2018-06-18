@@ -24,65 +24,6 @@
 		57FF3E441F05196000B9535D /* ConsoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FF3E431F05196000B9535D /* ConsoleViewController.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		3DC0A8B420D45C5E0069BA68 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3DC0A8A820D45C5D0069BA68 /* SwiftGit2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BEB31F231A0D6F7A00F525B9;
-			remoteInfo = "SwiftGit2-OSX";
-		};
-		3DC0A8B620D45C5E0069BA68 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3DC0A8A820D45C5D0069BA68 /* SwiftGit2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BEB31F2E1A0D6F7A00F525B9;
-			remoteInfo = "SwiftGit2-OSXTests";
-		};
-		3DC0A8B820D45C5E0069BA68 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3DC0A8A820D45C5D0069BA68 /* SwiftGit2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 621E66B41C72958800A0F352;
-			remoteInfo = "SwiftGit2-iOS";
-		};
-		3DC0A8BA20D45C5E0069BA68 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3DC0A8A820D45C5D0069BA68 /* SwiftGit2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 621E66CE1C72958D00A0F352;
-			remoteInfo = "SwiftGit2-iOSTests";
-		};
-		3DC0A8BC20D45C5E0069BA68 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3DC0A8A820D45C5D0069BA68 /* SwiftGit2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BEB31F8F1A0E563900F525B9;
-			remoteInfo = "libgit2-OSX";
-		};
-		3DC0A8BE20D45C5E0069BA68 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3DC0A8A820D45C5D0069BA68 /* SwiftGit2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 621E66E11C729CE500A0F352;
-			remoteInfo = "libgit2-iOS";
-		};
-		3DC0A8C020D45C5E0069BA68 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3DC0A8A820D45C5D0069BA68 /* SwiftGit2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 621E66EC1C729EB800A0F352;
-			remoteInfo = "OpenSSL-iOS";
-		};
-		3DC0A8C220D45C5E0069BA68 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3DC0A8A820D45C5D0069BA68 /* SwiftGit2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 621E66F21C729EBB00A0F352;
-			remoteInfo = "libssh2-iOS";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		3D2A78A520D4484D008E3FE8 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -112,7 +53,6 @@
 		3D977BFC1F1D476E008A6350 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		3D977BFE1F1D51D0008A6350 /* ListProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListProtocol.swift; sourceTree = "<group>"; };
 		3DC0A8A520D45B8B0069BA68 /* libgit2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgit2.a; path = ../SwiftGit2/External/libgit2.a; sourceTree = "<group>"; };
-		3DC0A8A820D45C5D0069BA68 /* SwiftGit2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftGit2.xcodeproj; path = ../SwiftGit2/SwiftGit2.xcodeproj; sourceTree = "<group>"; };
 		3DFF43D21F1E84F6002EF027 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		573D841C1F045D6800959A5F /* Xnpm-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Xnpm-Bridging-Header.h"; sourceTree = "<group>"; };
 		573D841D1F045D6900959A5F /* TaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskController.h; sourceTree = "<group>"; };
@@ -137,7 +77,6 @@
 		3D28326F1EE777B200039AE3 = {
 			isa = PBXGroup;
 			children = (
-				3DC0A8A820D45C5D0069BA68 /* SwiftGit2.xcodeproj */,
 				3DFF43D21F1E84F6002EF027 /* README.md */,
 				3D28327A1EE777B300039AE3 /* Xnpm */,
 				3D2832791EE777B300039AE3 /* Products */,
@@ -182,21 +121,6 @@
 				3D59B6B620D454F000B40E62 /* SwiftGit2.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3DC0A8A920D45C5D0069BA68 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3DC0A8B520D45C5E0069BA68 /* SwiftGit2.framework */,
-				3DC0A8B720D45C5E0069BA68 /* SwiftGit2-OSXTests.xctest */,
-				3DC0A8B920D45C5E0069BA68 /* SwiftGit2.framework */,
-				3DC0A8BB20D45C5E0069BA68 /* SwiftGit2-iOSTests.xctest */,
-				3DC0A8BD20D45C5E0069BA68 /* libgit2.a */,
-				3DC0A8BF20D45C5E0069BA68 /* libgit2.a */,
-				3DC0A8C120D45C5E0069BA68 /* libssl.a */,
-				3DC0A8C320D45C5E0069BA68 /* libssh2.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,77 +173,12 @@
 			mainGroup = 3D28326F1EE777B200039AE3;
 			productRefGroup = 3D2832791EE777B300039AE3 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 3DC0A8A920D45C5D0069BA68 /* Products */;
-					ProjectRef = 3DC0A8A820D45C5D0069BA68 /* SwiftGit2.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				3D2832771EE777B300039AE3 /* Xnpm */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		3DC0A8B520D45C5E0069BA68 /* SwiftGit2.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftGit2.framework;
-			remoteRef = 3DC0A8B420D45C5E0069BA68 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DC0A8B720D45C5E0069BA68 /* SwiftGit2-OSXTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SwiftGit2-OSXTests.xctest";
-			remoteRef = 3DC0A8B620D45C5E0069BA68 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DC0A8B920D45C5E0069BA68 /* SwiftGit2.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftGit2.framework;
-			remoteRef = 3DC0A8B820D45C5E0069BA68 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DC0A8BB20D45C5E0069BA68 /* SwiftGit2-iOSTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SwiftGit2-iOSTests.xctest";
-			remoteRef = 3DC0A8BA20D45C5E0069BA68 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DC0A8BD20D45C5E0069BA68 /* libgit2.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libgit2.a;
-			remoteRef = 3DC0A8BC20D45C5E0069BA68 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DC0A8BF20D45C5E0069BA68 /* libgit2.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libgit2.a;
-			remoteRef = 3DC0A8BE20D45C5E0069BA68 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DC0A8C120D45C5E0069BA68 /* libssl.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libssl.a;
-			remoteRef = 3DC0A8C020D45C5E0069BA68 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DC0A8C320D45C5E0069BA68 /* libssh2.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libssh2.a;
-			remoteRef = 3DC0A8C220D45C5E0069BA68 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3D2832761EE777B300039AE3 /* Resources */ = {
