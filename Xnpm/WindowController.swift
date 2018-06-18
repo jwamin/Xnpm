@@ -28,15 +28,7 @@ class WindowController: NSWindowController,NSWindowDelegate {
     }
 
 
-    @available(OSX 10.12.2, *)
-    override func makeTouchBar() -> NSTouchBar? {
-        let touchBar = NSTouchBar()
-        touchBar.delegate = self
-        touchBar.customizationIdentifier = .XnpmTouchBar
-        touchBar.defaultItemIdentifiers = [.icon,.label, .fixedSpaceLarge, .otherItemsProxy]
-        
-        return touchBar
-    }
+
     
     func windowWillClose(_ notification: Notification) {
         let delegate = NSApp.delegate as! AppDelegate
@@ -47,33 +39,7 @@ class WindowController: NSWindowController,NSWindowDelegate {
 
 // MARK: - NSTouchBarDelegate
 
-@available(OSX 10.12.2, *)
-extension WindowController: NSTouchBarDelegate {
-    
-    func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItemIdentifier) -> NSTouchBarItem? {
-        
-        switch identifier {
-        case NSTouchBarItemIdentifier.label:
-            let custom = NSCustomTouchBarItem(identifier: identifier)
-            let label = NSTextField.init(labelWithString: NSLocalizedString("Xnpm", comment:""))
-            custom.view = label
-            
-            return custom
-        case NSTouchBarItemIdentifier.icon:
-            let custom = NSCustomTouchBarItem(identifier: identifier)
-            let img = NSApp.applicationIconImage!
-            img.size = CGSize(width: 30.0, height: 30.0)
-            let imgview = NSImageView(image: img)
-            imgview.frame.size = CGSize(width: imgview.frame.width, height: 30.0)
-            imgview.imageScaling = .scaleProportionallyUpOrDown
-            custom.view = imgview
-            print("something")
-            return custom
-        default:
-            return nil
-        }
-    }
-}
+
 
 class Window: NSWindow {
     

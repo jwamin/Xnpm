@@ -349,7 +349,7 @@
                                         </tableView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.69230769230769229" horizontal="YES" id="h7l-KO-Cwh">
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="h7l-KO-Cwh">
                                     <rect key="frame" x="1" y="179" width="438" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -648,8 +648,10 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="tS3-4d-Z07" secondAttribute="trailing" constant="3" id="0AN-If-WV7"/>
                                     <constraint firstAttribute="trailing" secondItem="NiA-b1-jxX" secondAttribute="trailing" id="A2C-oG-aGw"/>
                                     <constraint firstAttribute="trailing" secondItem="yvy-gU-niP" secondAttribute="trailing" id="Kx2-tJ-sX6"/>
+                                    <constraint firstItem="tS3-4d-Z07" firstAttribute="leading" secondItem="NUs-27-1S0" secondAttribute="leading" id="OJT-k7-r0N"/>
                                     <constraint firstAttribute="trailing" secondItem="9PA-lp-zUW" secondAttribute="trailing" id="krr-0V-SLs"/>
                                 </constraints>
                                 <visibilityPriorities>
@@ -762,7 +764,7 @@
                 </viewController>
                 <customObject id="HRz-dy-J1D" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="769" y="1021"/>
+            <point key="canvasLocation" x="782" y="1021"/>
         </scene>
     </scenes>
     <resources>

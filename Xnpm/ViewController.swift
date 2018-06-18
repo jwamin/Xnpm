@@ -134,7 +134,7 @@ class ViewController: NSViewController {
     @IBAction func refresh(_ sender: Any) {
         
         package.processPackage()
-        
+        changed(self)
     }
     @IBAction func editInExternalEditor(_ sender: Any) {
         NSWorkspace.shared().open(package.url)
@@ -181,7 +181,7 @@ class ViewController: NSViewController {
         let str = NSString(string: url.absoluteString)
         let path = str.deletingLastPathComponent
         let finalURL = URL(string: path)!
-        print(finalURL)
+    
         let repo = Repository.at(finalURL)
         if let repo = repo.value{
             let currentBranch = repo.HEAD()
@@ -190,103 +190,6 @@ class ViewController: NSViewController {
                     self.package.setBranch(branchString: branchname)
                 }
                 
-            }
-            
-        }
-    }
-    
-    
-}
-
-// MARK: - NSTouchBarDelegate
-
-@available(OSX 10.12.2, *)
-extension ViewController: NSTouchBarDelegate {
-    
-    
-    @available(OSX 10.12.2, *)
-    override func makeTouchBar() -> NSTouchBar? {
-        let identifiers:[NSTouchBarItemIdentifier] = [.icon,.label,.button,.scriptButton]
-        let touchBar = NSTouchBar()
-        touchBar.delegate = self
-        touchBar.customizationIdentifier = .XnpmTouchBar
-        touchBar.defaultItemIdentifiers = identifiers //[.icon,.label, .fixedSpaceLarge, .otherItemsProxy]
-        return touchBar
-    }
-    
-    func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItemIdentifier) -> NSTouchBarItem? {
-        
-        switch identifier {
-        case NSTouchBarItemIdentifier.label:
-            let custom = NSCustomTouchBarItem(identifier: identifier)
-            let label = NSTextField.init(labelWithString: "Xnpm "+package.packageTitle)
-            custom.view = label
-            
-            return custom
-        case NSTouchBarItemIdentifier.icon:
-            let custom = NSCustomTouchBarItem(identifier: identifier)
-            let img = NSApp.applicationIconImage!
-            img.size = CGSize(width: 30.0, height: 30.0)
-            let imgview = NSImageView(image: img)
-            imgview.frame.size = CGSize(width: imgview.frame.width, height: 30.0)
-            imgview.imageScaling = .scaleProportionallyUpOrDown
-            custom.view = imgview
-            print("something")
-            return custom
-        case NSTouchBarItemIdentifier.button:
-            let buttonItem = NSCustomTouchBarItem(identifier: identifier)
-            var image = NSImage(named: NSImageNameTouchBarPlayTemplate)!
-            if(taskRunning){
-                image = NSImage(named: NSImageNameTouchBarRecordStopTemplate)!
-            }
-            let button = NSButton(image: image, target: self, action: #selector(executeScript(sender:)))
-            buttonItem.view = button
-            return buttonItem
-        case NSTouchBarItemIdentifier.scriptButton:
-            let buttonItem = NSPopoverTouchBarItem(identifier: .scriptButton)
-            //buttonItem.showsCloseButton = true
-            buttonItem.collapsedRepresentationLabel = "Script: \(scriptDropdown.selectedItem!.title)"
-            buttonItem.popoverTouchBar = ScriptsPopover(self.scriptDropdown,self) as ScriptsPopover
-            (buttonItem.popoverTouchBar as! ScriptsPopover).presentingItem = buttonItem
-            return buttonItem
-        default:
-            return nil
-        }
-        
-    }
-    
-    func updateScriptButton(){
-        guard let touchBar = touchBar else { return }
-        print("got touchbar")
-        for itemIdentifier in touchBar.itemIdentifiers {
-            guard let item = touchBar.item(forIdentifier: itemIdentifier) as? NSPopoverTouchBarItem else {continue}
-            
-            if(itemIdentifier == NSTouchBarItemIdentifier.scriptButton){
-                print("got here")
-                item.collapsedRepresentationLabel = "Script: \(scriptDropdown.selectedItem!.title)"
-            }
-            
-        }
-    }
-    
-    
-    func customizeActionButton(_ isrunning:Bool){
-        
-        guard let touchBar = touchBar else { return }
-        print("got touchbar")
-        for itemIdentifier in touchBar.itemIdentifiers {
-            guard let item = touchBar.item(forIdentifier: itemIdentifier) as? NSCustomTouchBarItem,
-                let button = item.view as? NSButton else {continue}
-            
-            if(itemIdentifier == NSTouchBarItemIdentifier.button){
-                print("got here")
-                
-                var image = NSImage(named: NSImageNameTouchBarPlayTemplate)!
-                if(isrunning){
-                    image = NSImage(named: NSImageNameTouchBarRecordStopTemplate)!
-                }
-                
-                button.image = image
             }
             
         }
