@@ -46,13 +46,12 @@
 		3D28327F1EE777B300039AE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D2832821EE777B300039AE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3D2832841EE777B300039AE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3D59B6B620D454F000B40E62 /* SwiftGit2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftGit2.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/SwiftGit2-gtqjbqllemuyticpwkwhrcpuoyok/Build/Products/Debug/SwiftGit2.framework"; sourceTree = "<group>"; };
+		3D59B6B620D454F000B40E62 /* SwiftGit2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftGit2.framework; sourceTree = "<group>"; };
 		3D59B6B920D4558F00B40E62 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
 		3D5C4BC31F87CFFA0052FC8E /* TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchBar.swift; sourceTree = "<group>"; };
 		3D7E72F81EED907000928DB0 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		3D977BFC1F1D476E008A6350 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		3D977BFE1F1D51D0008A6350 /* ListProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListProtocol.swift; sourceTree = "<group>"; };
-		3DC0A8A520D45B8B0069BA68 /* libgit2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgit2.a; path = ../SwiftGit2/External/libgit2.a; sourceTree = "<group>"; };
 		3DFF43D21F1E84F6002EF027 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		573D841C1F045D6800959A5F /* Xnpm-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Xnpm-Bridging-Header.h"; sourceTree = "<group>"; };
 		573D841D1F045D6900959A5F /* TaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskController.h; sourceTree = "<group>"; };
@@ -116,7 +115,6 @@
 		3D2A789D20D4474B008E3FE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3DC0A8A520D45B8B0069BA68 /* libgit2.a */,
 				3D59B6B920D4558F00B40E62 /* Result.framework */,
 				3D59B6B620D454F000B40E62 /* SwiftGit2.framework */,
 			);
@@ -345,6 +343,10 @@
 				);
 				INFOPLIST_FILE = Xnpm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jossy.Xnpm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Xnpm/Xnpm-Bridging-Header.h";
@@ -367,6 +369,10 @@
 				);
 				INFOPLIST_FILE = Xnpm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jossy.Xnpm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Xnpm/Xnpm-Bridging-Header.h";
