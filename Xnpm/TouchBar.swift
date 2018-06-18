@@ -9,7 +9,6 @@
 import Cocoa
 
 
-
 extension NSTouchBarCustomizationIdentifier {
     fileprivate static let XnpmTouchBar = NSTouchBarCustomizationIdentifier("XnpmTouchBar")
     fileprivate static let ScriptspopoverBar = NSTouchBarCustomizationIdentifier("XnpmTouchBarScriptsPopover")
@@ -34,6 +33,7 @@ extension WindowController: NSTouchBarDelegate {
     
     
     override func makeTouchBar() -> NSTouchBar? {
+        
         let touchBar = NSTouchBar()
         touchBar.delegate = self
         touchBar.customizationIdentifier = .XnpmTouchBar
@@ -46,21 +46,9 @@ extension WindowController: NSTouchBarDelegate {
         
         switch identifier {
         case NSTouchBarItemIdentifier.label:
-            let custom = NSCustomTouchBarItem(identifier: identifier)
-            let label = NSTextField.init(labelWithString: NSLocalizedString("Xnpm", comment:""))
-            custom.view = label
-            
-            return custom
+            return touchBarLabel(packageName:"")
         case NSTouchBarItemIdentifier.icon:
-            let custom = NSCustomTouchBarItem(identifier: identifier)
-            let img = NSApp.applicationIconImage!
-            img.size = CGSize(width: 30.0, height: 30.0)
-            let imgview = NSImageView(image: img)
-            imgview.frame.size = CGSize(width: imgview.frame.width, height: 30.0)
-            imgview.imageScaling = .scaleProportionallyUpOrDown
-            custom.view = imgview
-            print("something")
-            return custom
+            return touchBarImageItem()
         default:
             return nil
         }
@@ -85,21 +73,9 @@ extension ViewController: NSTouchBarDelegate {
         
         switch identifier {
         case NSTouchBarItemIdentifier.label:
-            let custom = NSCustomTouchBarItem(identifier: identifier)
-            let label = NSTextField.init(labelWithString: "Xnpm "+package.packageTitle)
-            custom.view = label
-            
-            return custom
+            return touchBarLabel(packageName:package.packageTitle!)
         case NSTouchBarItemIdentifier.icon:
-            let custom = NSCustomTouchBarItem(identifier: identifier)
-            let img = NSApp.applicationIconImage!
-            img.size = CGSize(width: 30.0, height: 30.0)
-            let imgview = NSImageView(image: img)
-            imgview.frame.size = CGSize(width: imgview.frame.width, height: 30.0)
-            imgview.imageScaling = .scaleProportionallyUpOrDown
-            custom.view = imgview
-            print("something")
-            return custom
+            return touchBarImageItem()
         case NSTouchBarItemIdentifier.button:
             let buttonItem = NSCustomTouchBarItem(identifier: identifier)
             var image = NSImage(named: NSImageNameTouchBarPlayTemplate)!
@@ -152,13 +128,12 @@ extension ViewController: NSTouchBarDelegate {
     func customizeActionButton(_ isrunning:Bool){
         
         guard let touchBar = touchBar else { return }
-        print("got touchbar")
+        
         for itemIdentifier in touchBar.itemIdentifiers {
             guard let item = touchBar.item(forIdentifier: itemIdentifier) as? NSCustomTouchBarItem,
                 let button = item.view as? NSButton else {continue}
             
             if(itemIdentifier == NSTouchBarItemIdentifier.button){
-                print("got here")
                 
                 var image = NSImage(named: NSImageNameTouchBarPlayTemplate)!
                 if(isrunning){
@@ -169,6 +144,7 @@ extension ViewController: NSTouchBarDelegate {
             }
             
         }
+        
     }
     
     
@@ -193,21 +169,9 @@ extension ConsoleViewController: NSTouchBarDelegate {
         
         switch identifier {
         case NSTouchBarItemIdentifier.label:
-            let custom = NSCustomTouchBarItem(identifier: identifier)
-            let label = NSTextField.init(labelWithString: "Xnpm "+parentController!.package.packageTitle)
-            custom.view = label
-            
-            return custom
+            return touchBarLabel(packageName: parentController!.package.packageTitle)
         case NSTouchBarItemIdentifier.icon:
-            let custom = NSCustomTouchBarItem(identifier: identifier)
-            let img = NSApp.applicationIconImage!
-            img.size = CGSize(width: 30.0, height: 30.0)
-            let imgview = NSImageView(image: img)
-            imgview.frame.size = CGSize(width: imgview.frame.width, height: 30.0)
-            imgview.imageScaling = .scaleProportionallyUpOrDown
-            custom.view = imgview
-            //print("something")
-            return custom
+            return touchBarImageItem()
         case NSTouchBarItemIdentifier.button:
             let buttonItem = NSCustomTouchBarItem(identifier: identifier)
             let image = NSImage(named: NSImageNameTouchBarRecordStopTemplate)!
@@ -228,14 +192,13 @@ extension ConsoleViewController: NSTouchBarDelegate {
 // MARK: - Popover Scripts touchbar
 
 @available(OSX 10.12.2, *)
-class ScriptsPopover : NSTouchBar, NSScrubberDelegate,NSScrubberDataSource,NSScrubberFlowLayoutDelegate{
-    //refactor this to use scrollable buttons instead of scrubber
+class ScriptsPopover : NSTouchBar, NSScrubberDelegate, NSScrubberDataSource, NSScrubberFlowLayoutDelegate {
+    
     var presentingItem: NSPopoverTouchBarItem?
     var parentViewController:ViewController?
     var control:NSPopUpButton
     
     func dismiss(_ sender: Any?) {
-        print(self)
         guard let popover = presentingItem else { return }
         popover.dismissPopover(self)
     }
@@ -264,7 +227,7 @@ class ScriptsPopover : NSTouchBar, NSScrubberDelegate,NSScrubberDataSource,NSScr
     }
     
     func scrubber(_ scrubber: NSScrubber, viewForItemAt index: Int) -> NSScrubberItemView {
-  
+        
         let itemView = scrubber.makeItem(withIdentifier: "ScrubberItem", owner: self) as! NSScrubberTextItemView
         itemView.title = control.itemTitles[index]    
         return itemView
@@ -272,7 +235,6 @@ class ScriptsPopover : NSTouchBar, NSScrubberDelegate,NSScrubberDataSource,NSScr
     
     func scrubber(_ scrubber: NSScrubber, didSelectItemAt selectedIndex: Int) {
         control.selectItem(at: selectedIndex)
-        print("whaa?")
         dismiss(self)
         parentViewController?.changed(self)
     }
@@ -327,5 +289,26 @@ extension ScriptsPopover: NSTouchBarDelegate {
 }
 
 
+// MARK: - DRY TouchBarItem Functions
+
+@available(OSX 10.12.2, *)
+func touchBarLabel(packageName:String)->NSTouchBarItem{
+    let custom = NSCustomTouchBarItem(identifier: .label)
+    let label = NSTextField.init(labelWithString: "Xnpm "+packageName)
+    custom.view = label
+    return custom
+}
+
+@available(OSX 10.12.2, *)
+func touchBarImageItem()->NSTouchBarItem{
+    let custom = NSCustomTouchBarItem(identifier: .icon)
+    let img = NSApp.applicationIconImage!
+    img.size = CGSize(width: 30.0, height: 30.0)
+    let imgview = NSImageView(image: img)
+    imgview.frame.size = CGSize(width: imgview.frame.width, height: 30.0)
+    imgview.imageScaling = .scaleProportionallyUpOrDown
+    custom.view = imgview
+    return custom
+}
 
 
