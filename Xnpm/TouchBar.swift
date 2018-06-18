@@ -32,8 +32,9 @@ class ScriptsPopover : NSTouchBar, NSScrubberDelegate,NSScrubberDataSource,NSScr
     var control:NSPopUpButton
     
     func dismiss(_ sender: Any?) {
+        print(self)
         guard let popover = presentingItem else { return }
-        popover.dismissPopover(sender)
+        popover.dismissPopover(self)
     }
     
     func numberOfItems(for scrubber: NSScrubber) -> Int {
@@ -67,6 +68,8 @@ class ScriptsPopover : NSTouchBar, NSScrubberDelegate,NSScrubberDataSource,NSScr
     
     func scrubber(_ scrubber: NSScrubber, didSelectItemAt selectedIndex: Int) {
         control.selectItem(at: selectedIndex)
+        print("whaa?")
+        dismiss(self)
         parentViewController?.changed(self)
     }
     
@@ -75,6 +78,7 @@ class ScriptsPopover : NSTouchBar, NSScrubberDelegate,NSScrubberDataSource,NSScr
         super.init()
         delegate = self
         parentViewController = parentVC
+        
         let items:[NSTouchBarItemIdentifier] = [.Scrubber]
         
 //        for item in scriptsObject.itemTitles{

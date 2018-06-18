@@ -247,6 +247,7 @@ extension ViewController: NSTouchBarDelegate {
             //buttonItem.showsCloseButton = true
             buttonItem.collapsedRepresentationLabel = "Script: \(scriptDropdown.selectedItem!.title)"
             buttonItem.popoverTouchBar = ScriptsPopover(self.scriptDropdown,self) as ScriptsPopover
+            (buttonItem.popoverTouchBar as! ScriptsPopover).presentingItem = buttonItem
             return buttonItem
         default:
             return nil
