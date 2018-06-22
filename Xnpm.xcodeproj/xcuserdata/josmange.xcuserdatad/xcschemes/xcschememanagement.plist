@@ -7,12 +7,17 @@
 		<key>Xnpm.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>3D2832771EE777B300039AE3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3D3C91A320DD373100B64D4A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
